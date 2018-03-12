@@ -5,6 +5,7 @@ import { GlobalpartnershipComponent } from './globalpartnership/globalpartnershi
 import { LoginComponent } from './login/login.component';
 import { PromoteComponent } from './promote/promote.component';
 import { RegisterComponent } from './register/register.component';
+import { ContactsComponent } from './contacts/contacts.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'globalpartnership', component: GlobalpartnershipComponent},
   { path: 'login', component: LoginComponent},
   { path: 'promote', component: PromoteComponent},
-  { path: 'register', component: RegisterComponent}
+  { path: 'register', component: RegisterComponent},
+  { path: 'contacts', component: ContactsComponent}
 ];
 
 @NgModule({
