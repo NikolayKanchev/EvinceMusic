@@ -11,6 +11,9 @@ import { GlobalpartnershipComponent } from './globalpartnership/globalpartnershi
 import { PromoteComponent } from './promote/promote.component';
 import { RegisterComponent } from './register/register.component';
 import { Material } from './material';
+import { ProfessionalServicesComponent } from './professional-services/professional-services.component';
+import { TalentComponent } from './talent/talent.component';
+import { ContactsComponent } from './contacts/contacts.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { Material } from './material';
     HomeComponent,
     GlobalpartnershipComponent,
     PromoteComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProfessionalServicesComponent,
+    TalentComponent,
+    ContactsComponent
   ],
   imports: [
     BrowserModule,
