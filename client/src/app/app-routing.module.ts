@@ -9,12 +9,20 @@ import { ContactsComponent } from './contacts/contacts.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+<<<<<<< HEAD
   { path: 'home', component: HomeComponent},
   { path: 'globalpartnership', component: GlobalpartnershipComponent},
   { path: 'login', component: LoginComponent},
   { path: 'promote', component: PromoteComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'contacts', component: ContactsComponent}
+=======
+  { path: 'home', component: HomeComponent },
+  { path: 'globalpartnership', component: GlobalpartnershipComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'promote', component: PromoteComponent },
+  { path: 'register', component: RegisterComponent }
+>>>>>>> nik
 ];
 
 @NgModule({
