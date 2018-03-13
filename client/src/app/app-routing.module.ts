@@ -8,6 +8,7 @@ import { RegisterComponent } from './register/register.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { PrivatelessonsComponent } from './privatelessons/privatelessons.component';
 import { ProfessionalServicesComponent } from './professional-services/professional-services.component';
+import { TalentComponent } from './talent/talent.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -23,7 +24,10 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'promote', component: PromoteComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'professionalservices', component: ProfessionalServicesComponent}
+  { path: 'professionalservices', component: ProfessionalServicesComponent},
+  { path: 'talent', component: TalentComponent},
+  { path: 'promote', component: PromoteComponent}
+
  
 ];
 
