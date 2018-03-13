@@ -6,11 +6,12 @@ import { LoginComponent } from './login/login.component';
 import { PromoteComponent } from './promote/promote.component';
 import { RegisterComponent } from './register/register.component';
 import { ContactsComponent } from './contacts/contacts.component';
+import { PrivatelessonsComponent } from './privatelessons/privatelessons.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-
   { path: 'home', component: HomeComponent},
+  { path: 'privatelessons', component: PrivatelessonsComponent},
   { path: 'globalpartnership', component: GlobalpartnershipComponent},
   { path: 'login', component: LoginComponent},
   { path: 'promote', component: PromoteComponent},
