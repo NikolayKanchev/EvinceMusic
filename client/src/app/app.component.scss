@@ -6,4 +6,38 @@
     flex: 1 1 auto;
   }
 
+  #logo {
+    background-image: url('logo.png');
+    background-repeat: no-repeat;
+    border-radius: 0%;
+    width: 10em;
+    font-weight: inherit;
+  }
+
+  .mat-button{
+    color: black;
+  }
+
+  .mat-toolbar{
+    background-color: white;
+    opacity: 0.8;
+  }
+
+  .mat-icon-button{
+    color: white;
+    display: none;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    .mat-icon-button{
+      color: white;
+      display: inline;
+    }
+
+    .mat-toolbar{
+      display: none;
+    }
+}
+
+  
   

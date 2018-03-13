@@ -14,6 +14,7 @@ import { Material } from './material';
 import { ProfessionalServicesComponent } from './professional-services/professional-services.component';
 import { TalentComponent } from './talent/talent.component';
 import { ContactsComponent } from './contacts/contacts.component';
+import { PrivatelessonsComponent } from './privatelessons/privatelessons.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ContactsComponent } from './contacts/contacts.component';
     RegisterComponent,
     ProfessionalServicesComponent,
     TalentComponent,
-    ContactsComponent
+    ContactsComponent,
+    PrivatelessonsComponent
   ],
   imports: [
     BrowserModule,
