@@ -7,6 +7,7 @@ import { PromoteComponent } from './promote/promote.component';
 import { RegisterComponent } from './register/register.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { PrivatelessonsComponent } from './privatelessons/privatelessons.component';
+import { ProfessionalServicesComponent } from './professional-services/professional-services.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'globalpartnership', component: GlobalpartnershipComponent },
   { path: 'login', component: LoginComponent },
   { path: 'promote', component: PromoteComponent },
-  { path: 'register', component: RegisterComponent }
+  { path: 'register', component: RegisterComponent },
+  { path: 'professionalservices', component: ProfessionalServicesComponent}
  
 ];
 
