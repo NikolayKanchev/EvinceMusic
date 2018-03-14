@@ -1,4 +1,4 @@
-$base: rgb(116, 110, 122);
+$base: rgb(35, 4, 119);
 $text: #555;
 $invalid: #E91E63;
 $width: 400px;
@@ -13,6 +13,11 @@ html, body, form, span, h1 {
     background-color: white
     
 }
+
+form {
+  opacity: 0.9;
+}
+
 
 h1 {
   width: 100%;

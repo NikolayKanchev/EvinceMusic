@@ -4,12 +4,12 @@ import { HomeComponent } from './home/home.component';
 import { GlobalpartnershipComponent } from './globalpartnership/globalpartnership.component';
 import { LoginComponent } from './login/login.component';
 import { PromoteComponent } from './promote/promote.component';
-import { RegisterComponent } from './register/register.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { PrivatelessonsComponent } from './privatelessons/privatelessons.component';
 import { ProfessionalServicesComponent } from './professional-services/professional-services.component';
 import { TalentComponent } from './talent/talent.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -17,22 +17,13 @@ const routes: Routes = [
   { path: 'privatelessons', component: PrivatelessonsComponent},
   { path: 'globalpartnership', component: GlobalpartnershipComponent},
   { path: 'login', component: LoginComponent},
-  { path: 'promote', component: PromoteComponent},
-  { path: 'register', component: RegisterComponent},
   { path: 'login/register', component: RegisterComponent},
   { path: 'login/resetpassword', component: ResetpasswordComponent},
   { path: 'contacts', component: ContactsComponent},
-  { path: 'home', component: HomeComponent },
-  { path: 'globalpartnership', component: GlobalpartnershipComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'promote', component: PromoteComponent, children: [
-    { path: 'register', component: RegisterComponent },
-  ] },
+  { path: 'promote', component: PromoteComponent},
+  { path: 'promote/register', component: RegisterComponent },
   { path: 'professionalservices', component: ProfessionalServicesComponent},
-  { path: 'talent', component: TalentComponent},
-  { path: 'promote', component: PromoteComponent}
-
- 
+  { path: 'talent', component: TalentComponent} 
 ];
 
 @NgModule({
