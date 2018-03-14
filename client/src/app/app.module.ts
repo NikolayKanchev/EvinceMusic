@@ -15,6 +15,7 @@ import { ProfessionalServicesComponent } from './professional-services/professio
 import { TalentComponent } from './talent/talent.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { PrivatelessonsComponent } from './privatelessons/privatelessons.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { PrivatelessonsComponent } from './privatelessons/privatelessons.compone
     ProfessionalServicesComponent,
     TalentComponent,
     ContactsComponent,
-    PrivatelessonsComponent
+    PrivatelessonsComponent,
+    ResetpasswordComponent
   ],
   imports: [
     BrowserModule,
