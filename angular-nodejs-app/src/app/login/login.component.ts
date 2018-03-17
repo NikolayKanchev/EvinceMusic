@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators, FormGroup} from '@angular/forms';
+import {FormControl, Validators, FormGroup, FormBuilder} from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,9 +10,31 @@ import {FormControl, Validators, FormGroup} from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   private loginForm: FormGroup;
- 
-  constructor() { }
+
+  // constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
+  constructor(private fb: FormBuilder, private router: Router) { }
+
+  onSubmitLogin(loginForm){
+    // if(loginForm.valid){
+    //   console.log("Form valid: ", loginForm.valid);
+    //   this.authService.login().subscribe(() => {
+    //     console.log("Now I am logged in!");
+    //     this.router.navigateByUrl(this.authService.redirectUrl);
+    //   })
+    // }else{
+    //   console.log("Form valid: ", loginForm.valid);
+    // }
+  }
 
   ngOnInit() {
+    this.createForm();
   }
+
+  createForm(): any {
+    this.loginForm = this.fb.group({
+      username: ["", Validators.required],
+      password: ["", Validators.required]
+    })
+  }
+
 }

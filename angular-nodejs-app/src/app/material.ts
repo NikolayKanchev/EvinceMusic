@@ -7,7 +7,21 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
-  imports: [MatButtonModule, MatToolbarModule, MatCardModule, MatMenuModule, MatIconModule, MatFormFieldModule],
-  exports: [MatButtonModule, MatToolbarModule, MatCardModule, MatMenuModule, MatIconModule, MatFormFieldModule]
+  imports: [
+    MatButtonModule,
+    MatToolbarModule, 
+    MatCardModule, 
+    MatMenuModule, 
+    MatIconModule, 
+    MatFormFieldModule
+  ],
+  exports: [
+    MatButtonModule,
+    MatToolbarModule, 
+    MatCardModule, 
+    MatMenuModule, 
+    MatIconModule, 
+    MatFormFieldModule
+  ]
 })
 export class Material { }
