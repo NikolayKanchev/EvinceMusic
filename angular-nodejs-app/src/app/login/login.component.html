@@ -5,9 +5,15 @@
     <h2 class="fa fa-facebook" id="facebook"> Login with Facebook</h2>
     <h2 href="#" class="fa fa-spotify" id="spotify"> Login wuth spotify</h2>
 
-    <input formControlName="username" id="email" placeholder="E-mail" type="email" value="" required>
+    <input formControlName="username" id="email" placeholder="E-mail" type="email" autocomplete="off" value="" required>
+    <p class="error" *ngIf="loginForm.controls.username.errors?.required && loginForm.controls.username.touched">
+            Please fill out your e-mail !
+    </p>
 
-    <input formControlName="password" placeholder="Password" type="password" value="" required>      
+    <input formControlName="password" placeholder="Password" type="password" autocomplete="off" value="" required>
+    <p class="error" *ngIf="loginForm.controls.password.errors?.required && loginForm.controls.password.touched">
+        Please fill out your password!
+    </p>       
 
     <button type="submit">Login</button>
 

@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   private loginForm: FormGroup;
+  // emailPlaceholder: string = "E-mail";
 
   // constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
   constructor(private fb: FormBuilder, private router: Router) { }

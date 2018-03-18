@@ -89,7 +89,7 @@ textarea {
       visibility: visible !important;
       opacity: 1;
     }
-  }  
+  }
 }
 
 button {
@@ -118,4 +118,10 @@ button {
 
 #resetAndRegister a{
     color: red;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  text-align: center;
 }
