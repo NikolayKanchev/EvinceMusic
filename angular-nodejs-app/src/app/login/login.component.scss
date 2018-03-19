@@ -45,7 +45,6 @@ form {
   width: $width + 60px;
   margin: 30px auto 0;
   box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.2);
-  padding: 0 0 30px;
   border-radius: 3px;
   color: $text;
 }
@@ -62,7 +61,7 @@ input,
 textarea {
   font: inherit;
   font-size: 0.8em;
-  margin: 28px 25px 10px;
+  margin: 18px 25px 10px;
   width: $width;
   display: block;
   border: none;
@@ -120,8 +119,31 @@ button {
     color: red;
 }
 
+#or{
+  text-align: center;
+  font-weight: bolder;
+  color: gray;
+  margin-bottom: 3em;
+}
+
 .error {
   color: red;
   font-size: 12px;
-  text-align: center;
+  margin-left: 2.1em;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  padding-top: 0;
 }
+
+#emptyLine{
+  visibility: hidden;
+}
+
+input{
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  margin-top: 2em;
+}
+

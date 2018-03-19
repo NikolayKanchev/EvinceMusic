@@ -1,14 +1,31 @@
-<form novalidate>
+<form [formGroup]="registerForm" novalidate
+(submit)="onSubmitLogin(registerForm)">
     <br>
     <h2 class="fa fa-facebook" id="facebook"> Continue with Facebook</h2>
     <h2 href="#" class="fa fa-spotify" id="spotify"> Continue wuth spotify</h2>
-    <p>- or -<br>Sign up with your email address</p>
-    <input placeholder="First name" type="text" value="" required>
-    <input placeholder="Last name" type="text" value="" required>
-    <input placeholder="Username" type="text" value="" required>
-    <input id="email" placeholder="Email address" type="email" onblur="this.setAttribute('value', this.value);" value="" required>
-    <input placeholder="Password" type="password" value="" required>
-    <input placeholder="Re-enter password" type="password" value="" required>
-    <p>By creating an account you agree to the Terms and Conditions<br>and privacy policy.</p>
-    <button>Submit</button>
+    <p>
+        - or -
+        <br>
+        Sign up with your email address
+    </p>
+    <input formControlName="firstName" placeholder="First name" type="text" value="" required>
+    <input formControlName="lastName" placeholder="Last name" type="text" value="" required>
+    <input formControlName="username" placeholder="Username" type="text" value="" required>
+    <input formControlName="email" id="email" placeholder="Email address" type="email" value="" required>
+    <input formControlName="password" placeholder="Password" type="password" value="" required>
+    <input formControlName="retypePassword" placeholder="Re-enter password" type="password" value="" required>
+    <span class="error" *ngIf="!registerForm.controls.email.valid && registerForm.controls.email.touched">
+        Please enter a valid e-mail !!!
+    </span>
+    <span class="error" id="emptyLine" *ngIf="(registerForm.controls.email.valid && registerForm.controls.email.touched) || !registerForm.controls.email.touched">ooooooooooooooooooooooo</span>
+    <span class="error" id="requiredFieldsMessage" *ngIf="!registerForm.valid && registerForm.touched">
+          Fill out all the fields !!!
+    </span>
+    <p>
+        By creating an account you agree to the 
+        <a>Terms and Conditions</a>
+        <br>and 
+        <a>privacy policy</a>.
+    </p>
+    <button type="submit">Submit</button>
 </form>
