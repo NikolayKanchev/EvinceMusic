@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./talent.component.scss']
 })
 export class TalentComponent implements OnInit {
-
+   onFileSelected(event){
+     console.log(event);
+   }
   constructor() { }
 
   ngOnInit() {
