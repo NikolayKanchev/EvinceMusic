@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators, FormGroup, FormBuilder} from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 
 @Component({
@@ -10,21 +11,19 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   private loginForm: FormGroup;
-  // emailPlaceholder: string = "E-mail";
 
-  // constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
-  constructor(private fb: FormBuilder, private router: Router) { }
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
 
   onSubmitLogin(loginForm){
-    // if(loginForm.valid){
-    //   console.log("Form valid: ", loginForm.valid);
-    //   this.authService.login().subscribe(() => {
-    //     console.log("Now I am logged in!");
-    //     this.router.navigateByUrl(this.authService.redirectUrl);
-    //   })
-    // }else{
-    //   console.log("Form valid: ", loginForm.valid);
-    // }
+    if(loginForm.valid){
+      console.log("Form valid: ", loginForm.valid);
+      this.authService.login().subscribe(() => {
+        console.log("Now I am logged in!");
+        this.router.navigateByUrl(this.authService.redirectUrl);
+      })
+    }else{
+      console.log("Form valid: ", loginForm.valid);
+    }
   }
 
   ngOnInit() {

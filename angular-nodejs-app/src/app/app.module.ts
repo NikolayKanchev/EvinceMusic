@@ -1,8 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
-
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
@@ -18,6 +16,10 @@ import { PrivatelessonsComponent } from './privatelessons/privatelessons.compone
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth.guard';
+import { DataService } from './data.service';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +44,7 @@ import {HttpClientModule} from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

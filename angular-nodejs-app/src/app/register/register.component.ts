@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   private registerForm: FormGroup;
-  // emailPlaceholder: string = "E-mail";
 
   // constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
   constructor(private fb: FormBuilder, private router: Router) { }

@@ -10,12 +10,13 @@ import { ProfessionalServicesComponent } from './professional-services/professio
 import { TalentComponent } from './talent/talent.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { RegisterComponent } from './register/register.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent},
   { path: 'privatelessons', component: PrivatelessonsComponent},
-  { path: 'globalpartnership', component: GlobalpartnershipComponent},
+  { path: 'globalpartnership', component: GlobalpartnershipComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent},
   { path: 'login/register', component: RegisterComponent},
   { path: 'login/resetpassword', component: ResetpasswordComponent},
