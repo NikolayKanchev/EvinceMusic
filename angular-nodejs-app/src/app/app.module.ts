@@ -17,6 +17,9 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { PrivatelessonsComponent } from './privatelessons/privatelessons.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth.guard';
+import { DataService } from './data.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

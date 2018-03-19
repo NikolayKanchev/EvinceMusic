@@ -105,6 +105,7 @@ button {
   width: $width;
   color: white;
   margin: 10px 0 0 25px;
+  margin-left: 2.4em;
   box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
   &:hover { 
     transform: translateY(-2px);
@@ -138,7 +139,7 @@ a:hover{
 .error {
   color: red;
   font-size: 12px;
-  margin-left: 2.1em;
+  margin-left: 2.5em;
 }
 
 #emptyLine{
@@ -147,4 +148,8 @@ a:hover{
 
 #requiredFieldsMessage{
   padding-left: 22%
+}
+
+input{
+  margin-left: 2.4em;
 }
