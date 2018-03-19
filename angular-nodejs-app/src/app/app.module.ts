@@ -17,6 +17,7 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { PrivatelessonsComponent } from './privatelessons/privatelessons.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     Material,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,8 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./talent.component.scss']
 })
 export class TalentComponent implements OnInit {
+  selectedFile = null;
+
    onFileSelected(event){
-     console.log(event);
+     this.selectedFile = event.target.files[0];
+     
+   }
+   onUpload(){
+
    }
   constructor() { }
 
