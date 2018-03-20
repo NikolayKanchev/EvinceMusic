@@ -10,18 +10,18 @@ export class TalentComponent implements OnInit {
   selectedFile = null;
 
    onFileSelected(event){
-     this.selectedFile = event.target.files[0];
+    // this.selectedFile = event.target.files[0];
 
    }
    onUpload(){
-     const fd = new FormData();
-     fd.append('image', this.selectedFile);
+    // const fd = new FormData();
+     //fd.append('image', this.selectedFile);
 
    }
-  constructor(private http: HttpClient) { }
+  constructor(/*private http: HttpClient*/) { }
 
   ngOnInit() {
-    
+
   }
 
 }
