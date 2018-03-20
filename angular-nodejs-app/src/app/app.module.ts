@@ -19,6 +19,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
 import { DataService } from './data.service';
+import { AdminpageComponent } from './adminpage/adminpage.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { DataService } from './data.service';
     TalentComponent,
     ContactsComponent,
     PrivatelessonsComponent,
-    ResetpasswordComponent
+    ResetpasswordComponent,
+    AdminpageComponent
   ],
   imports: [
     BrowserModule,

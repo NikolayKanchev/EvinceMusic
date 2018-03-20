@@ -15,10 +15,12 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
 
   onSubmitLogin(loginForm){
+    
     if(loginForm.valid){
-      console.log("Form valid: ", loginForm.valid);
+      this.authService.emailToCheck = loginForm.value.email;
+      this.authService.passwordToCheck = loginForm.value.password;
+
       this.authService.login().subscribe(() => {
-        console.log("Now I am logged in!");
         this.router.navigateByUrl(this.authService.redirectUrl);
       })
     }else{

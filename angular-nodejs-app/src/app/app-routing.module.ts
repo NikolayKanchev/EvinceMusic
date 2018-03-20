@@ -11,6 +11,7 @@ import { TalentComponent } from './talent/talent.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthGuard } from './auth.guard';
+import { AdminpageComponent } from './adminpage/adminpage.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -24,7 +25,8 @@ const routes: Routes = [
   { path: 'promote', component: PromoteComponent},
   { path: 'promote/register', component: RegisterComponent },
   { path: 'professionalservices', component: ProfessionalServicesComponent},
-  { path: 'talent', component: TalentComponent} 
+  { path: 'talent', component: TalentComponent},
+  { path: 'adminpage', component: AdminpageComponent}
 ];
 
 @NgModule({
