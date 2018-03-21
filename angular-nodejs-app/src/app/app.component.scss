@@ -1,6 +1,6 @@
 
 .mat-toolbar{
-  z-index: 99999;
+  z-index: 100;
 }
 
 .example-icon {
@@ -52,6 +52,19 @@
       display: none;
     }
 }
+
+.mat-form-field{
+  z-index: 9999999;
+  font-size: 12px;
+  width: 8em;
+}
+
+#smallMenuDropDown{
+  display: flex;
+  margin-left: 2em;
+}
+
+
 
 
   

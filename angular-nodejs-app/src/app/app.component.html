@@ -2,7 +2,7 @@
     <mat-toolbar-row>
       <div mat-card-avatar id="logo"></div>
       <span class="example-spacer"></span>
-      <span> ({{ username }})</span>
+      <!-- <span> {{ username }}</span> -->
       <button mat-button routerLink="/home" mat-button >Home</button>
       <button mat-button routerLink="/privatelessons" mat-button >Private Lessons</button>
       <button mat-button routerLink="/professionalservices">Professional Services</button>
@@ -10,7 +10,15 @@
       <button mat-button routerLink="/talent">Talent Pool</button>
       <button mat-button routerLink="/globalpartnership">Global Partnership</button>
       <button mat-button routerLink="/contacts">Contacts</button>
-      <button mat-button routerLink="/login">Login</button>
+      <button mat-button routerLink="/login" *ngIf="!hideLogin">Log In</button>
+      <mat-form-field *ngIf="hideLogin">
+        <mat-select placeholder="{{ username }}">
+          <mat-option *ngFor="let option of options" [value]="option.value">
+            {{ option.viewValue }}
+          </mat-option>
+          <mat-option>Log Out</mat-option>
+        </mat-select>
+      </mat-form-field>
     </mat-toolbar-row>
   </mat-toolbar>
 
@@ -46,10 +54,18 @@
       <mat-icon>contacts</mat-icon>
       <span>Contacts</span>
     </button>
-    <button mat-menu-item routerLink="/login">
-      <mat-icon>https</mat-icon>
-      <span>Login</span>
+    <button mat-menu-item routerLink="/login" *ngIf="!hideLogin">
+      <mat-icon>input</mat-icon>
+      <span>Log In</span>
     </button>
+    <mat-form-field id="smallMenuDropDown" *ngIf="hideLogin">
+        <mat-select placeholder="{{ username }}">
+          <mat-option *ngFor="let option of options" [value]="option.value">
+            {{ option.viewValue }}
+          </mat-option>
+          <mat-option>Log Out</mat-option>
+        </mat-select>
+    </mat-form-field>
   </mat-menu>
 
 <router-outlet></router-outlet>

@@ -7,10 +7,13 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 export class DataService {
 
   private usernameSource = new BehaviorSubject<String>("");
+  private hideLoginSource = new BehaviorSubject<boolean>(false);
   currentUsername = this.usernameSource.asObservable();
+  currentHideLogin = this.hideLoginSource.asObservable();
 
-  changeUsername(username: String){
+  changeUsername(username: String, hideLogin: boolean){
     this.usernameSource.next(username);
+    this.hideLoginSource.next(hideLogin);
   }
 
   private users: User[] = [
@@ -50,7 +53,7 @@ export class DataService {
   getLoggedUser(emailToCheck: string, passwordTocheck: string): User {
     for(let u of this.users){
       if (u.email === emailToCheck && u.password === passwordTocheck){
-        this.changeUsername(u.username);
+        this.changeUsername(u.username, true);
         return u;
       }
     }
