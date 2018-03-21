@@ -13,10 +13,8 @@
       <button mat-button routerLink="/login" *ngIf="!hideLogin">Log In</button>
       <mat-form-field *ngIf="hideLogin">
         <mat-select placeholder="{{ username }}">
-          <mat-option *ngFor="let option of options" [value]="option.value">
-            {{ option.viewValue }}
-          </mat-option>
-          <mat-option>Log Out</mat-option>
+          <mat-option routerLink="/acc-settings">Account settings</mat-option>
+          <mat-option routerLink="/login" (click)="onSubmitLoguot()">Log Out</mat-option>
         </mat-select>
       </mat-form-field>
     </mat-toolbar-row>
@@ -60,10 +58,8 @@
     </button>
     <mat-form-field id="smallMenuDropDown" *ngIf="hideLogin">
         <mat-select placeholder="{{ username }}">
-          <mat-option *ngFor="let option of options" [value]="option.value">
-            {{ option.viewValue }}
-          </mat-option>
-          <mat-option>Log Out</mat-option>
+            <mat-option routerLink="/acc-settings">Account settings</mat-option>
+            <mat-option routerLink="/login" (click)="onSubmitLoguot()">Log Out</mat-option>
         </mat-select>
     </mat-form-field>
   </mat-menu>

@@ -4,6 +4,7 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/delay';
 import { DataService } from './data.service';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class AuthService{
@@ -12,6 +13,16 @@ export class AuthService{
    loggedUser: any;
    emailToCheck: string;
    passwordToCheck: string;
+
+    private usernameSource = new BehaviorSubject<String>("");
+    private hideLoginSource = new BehaviorSubject<boolean>(false);
+    currentUsername = this.usernameSource.asObservable();
+    currentHideLogin = this.hideLoginSource.asObservable();
+
+    changeUsername(username: String, hideLogin: boolean){
+        this.usernameSource.next(username);
+        this.hideLoginSource.next(hideLogin);
+      }
 
    constructor(private ds: DataService) { }
 
@@ -25,13 +36,17 @@ export class AuthService{
                 this.isLoggedIn = false;
             }else{
                 this.isLoggedIn = true;
+
+                this.changeUsername(this.loggedUser.username, true);
+
+                if(this.redirectUrl === undefined){
+                    this.redirectUrl = "/home"
+                }
+                
                 if(this.loggedUser.username === "admin"){
                     this.redirectUrl = "/adminpage"
                 }
             }
-            
-            // console.log(this.loggedUser);
-            // console.log(this.redirectUrl);
          });
    }
 

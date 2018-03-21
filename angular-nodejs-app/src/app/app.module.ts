@@ -20,6 +20,7 @@ import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
 import { DataService } from './data.service';
 import { AdminpageComponent } from './adminpage/adminpage.component';
+import { AccSettingsComponent } from './acc-settings/acc-settings.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { AdminpageComponent } from './adminpage/adminpage.component';
     ContactsComponent,
     PrivatelessonsComponent,
     ResetpasswordComponent,
-    AdminpageComponent
+    AdminpageComponent,
+    AccSettingsComponent
   ],
   imports: [
     BrowserModule,

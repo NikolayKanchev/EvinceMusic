@@ -12,6 +12,7 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
 import { RegisterComponent } from './register/register.component';
 import { AuthGuard } from './auth.guard';
 import { AdminpageComponent } from './adminpage/adminpage.component';
+import { AccSettingsComponent } from './acc-settings/acc-settings.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -26,7 +27,8 @@ const routes: Routes = [
   { path: 'promote/register', component: RegisterComponent },
   { path: 'professionalservices', component: ProfessionalServicesComponent},
   { path: 'talent', component: TalentComponent},
-  { path: 'adminpage', component: AdminpageComponent}
+  { path: 'adminpage', component: AdminpageComponent},
+  { path: 'acc-settings', component: AccSettingsComponent}
 ];
 
 @NgModule({

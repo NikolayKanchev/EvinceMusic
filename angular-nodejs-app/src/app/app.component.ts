@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from './data.service';
 import { User } from './entities/user';
 import { FormControl } from '@angular/forms';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-root',
@@ -12,16 +12,17 @@ export class AppComponent implements OnInit{
 
   username: String;
   hideLogin: boolean;
-  options = [
-    {value: 'acc-settings', viewValue: 'Account settings'},
-    // {value: '', viewValue: ''},
-    {value: 'log-out', viewValue: 'Log Out'}
-  ];
 
-  constructor(private ds: DataService){}
+  constructor(private authService: AuthService){}
 
   ngOnInit(){
-    this.ds.currentUsername.subscribe(username => this.username = username);
-    this.ds.currentHideLogin.subscribe(hideLogin => this.hideLogin = hideLogin);
+    this.authService.currentUsername.subscribe(username => this.username = username);
+    this.authService.currentHideLogin.subscribe(hideLogin => this.hideLogin = hideLogin);
   }
+
+  onSubmitLoguot(){
+    this.authService.logout();
+    this.hideLogin = false;
+  }
+
 }

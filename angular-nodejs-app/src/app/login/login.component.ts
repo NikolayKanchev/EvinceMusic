@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {FormControl, Validators, FormGroup, FormBuilder} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { DataService } from '../data.service';
 
 
 @Component({
@@ -11,8 +12,9 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
   private loginForm: FormGroup;
+  hideLogin: boolean;
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
+  constructor(private ds: DataService, private fb: FormBuilder, private authService: AuthService, private router: Router) { }
 
   onSubmitLogin(loginForm){
     
@@ -29,6 +31,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    // this.ds.changeUsername("", false);
     this.createForm();
   }
 
