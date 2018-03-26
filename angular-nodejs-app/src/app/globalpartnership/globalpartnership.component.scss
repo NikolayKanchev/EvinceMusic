@@ -10,7 +10,8 @@ html, body {
 
 html, body, .card, span{
     box-sizing: border-box;
-    background-color: white
+    // background-color: white
+    background-color: #FAFAFA
 }
 
 .card {
@@ -84,21 +85,25 @@ img {
 }
 
 .card:hover .image{
-    transform: scale(1.2, 1.2);
-    transition: all 0.4s ease-in;
+    transform: scale(1.1, 1.1);
+    transition: all 0.3s ease-in;
 }
 
 .img-container{
     overflow: hidden;
     border-radius: 3px;
+    background: #FAFAFA;
+
 }
 
 #img-partnership, #text{
     width: 35em;
-    background: white;
+    // background: white;
+    background: #FAFAFA;
     margin-left: 1.5%;
     margin-right: 1.5%;
     border-radius: 3px;
+    box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.2);
 }
 
 #text h1, #allstars{
