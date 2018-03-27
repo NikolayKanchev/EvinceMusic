@@ -150,3 +150,20 @@ input{
   margin-left: 6%;
 }
 
+@media only screen and (max-width: 650px) {
+  form, textarea, button{
+    width: 80%;
+    margin-left: 10%;
+    text-align: center;
+  }
+  input{
+    width: 80%;
+    margin-left: 3em;
+  }
+  h2{
+    margin-left: 4%;
+  }
+  button{
+    margin-left: 2%;
+  }
+}

@@ -135,3 +135,15 @@ img {
     height: 170px;
     width: 100%;
 }
+
+@media only screen and (max-width: 650px) {
+    form, input{
+      width: 90%;
+      text-align: center;
+    }
+    #image2{
+        height: 100px;
+        width: 300px;
+        margin-left: 15%;
+    }
+}

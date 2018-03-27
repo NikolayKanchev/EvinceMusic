@@ -12,7 +12,6 @@ import { Material } from './material';
 import { ProfessionalServicesComponent } from './professional-services/professional-services.component';
 import { TalentComponent } from './talent/talent.component';
 import { ContactsComponent } from './contacts/contacts.component';
-import { PrivatelessonsComponent } from './privatelessons/privatelessons.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
@@ -34,7 +33,6 @@ import { AccSettingsComponent } from './acc-settings/acc-settings.component';
     ProfessionalServicesComponent,
     TalentComponent,
     ContactsComponent,
-    PrivatelessonsComponent,
     ResetpasswordComponent,
     AdminpageComponent,
     AccSettingsComponent

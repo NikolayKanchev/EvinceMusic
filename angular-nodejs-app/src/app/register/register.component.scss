@@ -14,8 +14,7 @@ html, body, form, span{
 }
 
 form {
-    opacity: 0.9;
-    // background-color: whitesmoke;
+    background-color: #FAFAFA;  
 }
 
 h2 {
@@ -152,4 +151,22 @@ a:hover{
 
 input{
   margin-left: 2.4em;
+}
+
+@media only screen and (max-width: 650px) {
+  form, textarea, button{
+    width: 80%;
+    margin-left: 10%;
+    text-align: center;
+  }
+  input{
+    width: 80%;
+    margin-left: 3em;
+  }
+  h2{
+    margin-left: 5%;
+  }
+  button{
+    margin-left: 2%;
+  }
 }

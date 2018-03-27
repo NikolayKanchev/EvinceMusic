@@ -2,66 +2,64 @@
     <mat-toolbar-row>
       <div mat-card-avatar id="logo"></div>
       <span class="example-spacer"></span>
-      <!-- <span> {{ username }}</span> -->
       <button mat-button routerLink="/home" mat-button >Home</button>
-      <button mat-button routerLink="/privatelessons" mat-button >Private Lessons</button>
       <button mat-button routerLink="/professionalservices">Professional Services</button>
       <button mat-button routerLink="/promote">Promotions</button>
       <button mat-button routerLink="/talent">Talent Pool</button>
       <button mat-button routerLink="/globalpartnership">Global Partnership</button>
       <button mat-button routerLink="/contacts">Contacts</button>
       <button mat-button routerLink="/login" *ngIf="!hideLogin">Log In</button>
-      <mat-form-field *ngIf="hideLogin">
+      <mat-form-field id="drop_down" *ngIf="hideLogin">
         <mat-select placeholder="{{ username }}">
           <mat-option routerLink="/acc-settings">Account settings</mat-option>
           <mat-option routerLink="/login" (click)="onSubmitLoguot()">Log Out</mat-option>
         </mat-select>
       </mat-form-field>
+
+<!-- Second menu -->
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>Menu
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/home">
+          <mat-icon>home</mat-icon>
+          <span>Home</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>assessment</mat-icon>
+          <span>Professional Services</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>event</mat-icon>
+          <span>Promotions</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>grade</mat-icon>
+          <span>Talent Pool</span>
+        </button>
+        <button mat-menu-item routerLink="/globalpartnership">
+          <mat-icon>language</mat-icon>
+          <span>Global Partnership</span>
+        </button>
+        <button mat-menu-item routerLink="/contacts">
+          <mat-icon>contacts</mat-icon>
+          <span>Contacts</span>
+        </button>
+        <button mat-menu-item routerLink="/login" *ngIf="!hideLogin">
+          <mat-icon>input</mat-icon>
+          <span>Log In</span>
+        </button>
+        <mat-form-field id="smallMenuDropDown" *ngIf="hideLogin">
+            <mat-select placeholder="{{ username }}">
+                <mat-option routerLink="/acc-settings">Account settings</mat-option>
+                <mat-option routerLink="/login" (click)="onSubmitLoguot()">Log Out</mat-option>
+            </mat-select>
+        </mat-form-field>
+      </mat-menu>
+<!-- end second menu -->
     </mat-toolbar-row>
   </mat-toolbar>
 
-  <button mat-icon-button [matMenuTriggerFor]="menu">
-    <mat-icon>more_vert</mat-icon>Menu
-  </button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item routerLink="/home">
-      <mat-icon>home</mat-icon>
-      <span>Home</span>
-    </button>
-    <button mat-menu-item routerLink="/privatelessons">
-      <mat-icon>book</mat-icon>
-      <span>Private Lessons</span>
-    </button>
-    <button mat-menu-item>
-      <mat-icon>assessment</mat-icon>
-      <span>Professional Services</span>
-    </button>
-    <button mat-menu-item>
-      <mat-icon>event</mat-icon>
-      <span>Promotions</span>
-    </button>
-    <button mat-menu-item>
-      <mat-icon>grade</mat-icon>
-      <span>Talent Pool</span>
-    </button>
-    <button mat-menu-item routerLink="/globalpartnership">
-      <mat-icon>language</mat-icon>
-      <span>Global Partnership</span>
-    </button>
-    <button mat-menu-item routerLink="/contacts">
-      <mat-icon>contacts</mat-icon>
-      <span>Contacts</span>
-    </button>
-    <button mat-menu-item routerLink="/login" *ngIf="!hideLogin">
-      <mat-icon>input</mat-icon>
-      <span>Log In</span>
-    </button>
-    <mat-form-field id="smallMenuDropDown" *ngIf="hideLogin">
-        <mat-select placeholder="{{ username }}">
-            <mat-option routerLink="/acc-settings">Account settings</mat-option>
-            <mat-option routerLink="/login" (click)="onSubmitLoguot()">Log Out</mat-option>
-        </mat-select>
-    </mat-form-field>
-  </mat-menu>
+  
 
 <router-outlet></router-outlet>

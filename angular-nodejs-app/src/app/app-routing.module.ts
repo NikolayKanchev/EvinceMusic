@@ -5,7 +5,6 @@ import { GlobalpartnershipComponent } from './globalpartnership/globalpartnershi
 import { LoginComponent } from './login/login.component';
 import { PromoteComponent } from './promote/promote.component';
 import { ContactsComponent } from './contacts/contacts.component';
-import { PrivatelessonsComponent } from './privatelessons/privatelessons.component';
 import { ProfessionalServicesComponent } from './professional-services/professional-services.component';
 import { TalentComponent } from './talent/talent.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
@@ -17,7 +16,6 @@ import { AccSettingsComponent } from './acc-settings/acc-settings.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent},
-  { path: 'privatelessons', component: PrivatelessonsComponent},
   { path: 'globalpartnership', component: GlobalpartnershipComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent},
   { path: 'login/register', component: RegisterComponent},

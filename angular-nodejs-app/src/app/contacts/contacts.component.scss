@@ -1,4 +1,5 @@
-$base: rgb(35, 4, 119);
+// $base: rgb(35, 4, 119);
+$base: #212121;
 $text: #555;
 $invalid: #E91E63;
 $width: 400px;
@@ -21,9 +22,12 @@ form {
 
 h1 {
   width: 100%;
-  background: $base;
+  // background: $base;
+  // padding: 20px;
+  // color: white;
+  background-color: #E0E0E0;
   padding: 20px;
-  color: white;
+  color: #616161;
   box-shadow: 0 5px 5px 0 rgba(0,0,0,0.05);
   border-radius: 3px 3px 0 0;
 }
@@ -36,6 +40,7 @@ form {
   padding: 0 0 40px;
   border-radius: 3px;
   color: $text;
+  margin-top: 9em;
 }
 
 input::-webkit-input-placeholder,
@@ -145,7 +150,7 @@ button {
   transition: transform 0.2s $cubic,
      box-shadow 0.2s $cubic;
   border: none;
-  background: $base;
+  background: red;
   cursor: pointer;
   border-radius: 3px;
   padding: 6px;
