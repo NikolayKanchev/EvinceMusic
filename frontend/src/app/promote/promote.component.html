@@ -1,3 +1,14 @@
-<p>
-  promote works!
-</p>
+<div class="main-container">
+    <div class="transperant" [@popOverState]="stateName">
+      <h1>Congratulations !!!<br>Your track have been added to the Talent Pool</h1>
+      <br><br>
+      <div id="social-btn">
+        <h2>Share on Social Media</h2><br>
+        <button id="facebook"><i class="fa fa-facebook"></i></button>
+        <button id="twetter"><i class="fa fa-twitter"></i></button>
+        <button id="instagram"><i class="fa fa-instagram"></i></button>
+        <button id="google"><i class="fa fa-google-plus"></i></button>
+      </div>
+      <button id="talent" routerLink="/talent">Go to Talent Pool</button>
+    </div>
+</div>
