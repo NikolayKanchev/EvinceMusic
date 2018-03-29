@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-//import { HttpClient } from '@angular/common/http/src/client';
+
 
 @Component({
   selector: 'app-talent',
