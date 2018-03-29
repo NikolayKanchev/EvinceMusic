@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from './entities/user';
 import { FormControl } from '@angular/forms';
-import { AuthService } from './auth.service';
+import { Auth1Service } from './auth1.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,7 @@ export class AppComponent implements OnInit{
   username: String;
   hideLogin: boolean;
 
-  constructor(private authService: AuthService){}
+  constructor(private authService: Auth1Service){}
 
   ngOnInit(){
     this.authService.currentUsername.subscribe(username => this.username = username);

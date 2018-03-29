@@ -54,6 +54,10 @@
     }
   },
   "defaults": {
+    "serve": {
+      "sslKey": "<relative path from .angular-cli.json>/server.key",
+      "sslCert": "<relative path from .angular-cli.json>/server.crt"
+    },
     "styleExt": "scss",
     "component": {}
   }

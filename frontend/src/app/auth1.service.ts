@@ -7,7 +7,7 @@ import { DataService } from './data.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
-export class AuthService{
+export class Auth1Service{
    redirectUrl: string; //- will store the attempted url
    isLoggedIn = false;
    loggedUser: any;
@@ -56,4 +56,3 @@ export class AuthService{
 
 
 }
-

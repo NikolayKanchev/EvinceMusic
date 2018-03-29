@@ -22,18 +22,21 @@ $cubic: cubic-bezier(.64,.09,.08,1);
   transition: transform 0.2s $cubic,
   box-shadow 0.2s $cubic;
   border: none;
-  background: red;
+  border: 1px solid #FAFAFA;
+  background: black;
   cursor: pointer;
-  border-radius: 3px;
+  border-radius: 5px;
   padding: 6px;
   width: 80px;
-  color: white;
+  color: #FAFAFA;
   margin: 3px 0 0;
   margin-left: 2.2em;
-  box-shadow: 0 3px 6px 0 #FAFAFA;
+//   box-shadow: 0 3px 6px 0 #FAFAFA;
   &:hover { 
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px 0 #FAFAFA;
+    // transform: translateY(-2px);
+    // box-shadow: 0 4px 6px 0 #FAFAFA;
+    background: white;
+    color: black;
   }
 }
 

@@ -1,8 +1,13 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {FormControl, Validators, FormGroup, FormBuilder} from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { Auth1Service } from '../auth1.service';
 import { DataService } from '../data.service';
+import {
+  AuthService,
+  FacebookLoginProvider,
+  GoogleLoginProvider
+} from 'angular5-social-login';
 
 
 @Component({
@@ -10,11 +15,35 @@ import { DataService } from '../data.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent implements OnInit {
   private loginForm: FormGroup;
   hideLogin: boolean;
 
-  constructor(private ds: DataService, private fb: FormBuilder, private authService: AuthService, private router: Router) { }
+  constructor(private ds: DataService, private fb: FormBuilder, private authService: Auth1Service, private socialAuthService: AuthService, private router: Router) { }
+
+
+  public socialSignIn(socialPlatform : string) {
+    let socialPlatformProvider;
+    if(socialPlatform == "facebook"){
+      socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
+    }else if(socialPlatform == "google"){
+      socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
+    }
+    
+    this.socialAuthService.signIn(socialPlatformProvider).then(
+      (userData) => {
+        console.log(socialPlatform+" sign in data : " , userData);
+        // Now sign-in with userData
+        this.authService.emailToCheck = userData.email;
+        this.authService.passwordToCheck = "validated_with_social_media";
+        this.authService.login().subscribe(() => {
+          this.router.navigateByUrl(this.authService.redirectUrl);
+        })
+      }
+    );
+  }
+
 
   onSubmitLogin(loginForm){
     
@@ -31,7 +60,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.ds.changeUsername("", false);
     this.createForm();
   }
 

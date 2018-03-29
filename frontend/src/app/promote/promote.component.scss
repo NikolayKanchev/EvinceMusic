@@ -20,20 +20,24 @@ $cubic: cubic-bezier(.64,.09,.08,1);
   transition: transform 0.2s $cubic,
   box-shadow 0.2s $cubic;
   border: none;
-  background: red;
+  background: black;
+  border: 1px solid #FAFAFA;
   cursor: pointer;
-  border-radius: 3px;
+  border-radius: 5px;
   padding: 6px;
   height: 40px;
   width: 140px;
   font-size: 16px;
-  color: white;
+  color: #FAFAFA;
   margin: 3px 0 0;
   margin-left: 2.2em;
-  box-shadow: 0 3px 6px 0 #FAFAFA;
+//   box-shadow: 0 1px 6px 0 #FAFAFA;
   &:hover { 
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px 0 #FAFAFA;
+    // transform: translateY(-2px);
+    // box-shadow: 0 4px 6px 0 #FAFAFA;
+    background: white;
+    color: black;
+
   }
 }
 
@@ -47,19 +51,19 @@ h1{
 }
 
 #facebook{
-    background: #3B5998;
+    // background: #3B5998;
 }
 
 #twetter{
-    background: rgb(29, 161, 242);
+    // background: rgb(29, 161, 242);
 }
 
 #instagram{
-    background: rgb(76, 76, 76);
+    // background: rgb(76, 76, 76);
 }
 
 #google{
-    background: rgb(219, 68, 55);
+    // background: rgb(219, 68, 55);
 }
 
 #facebook, #twetter, #instagram, #google{
