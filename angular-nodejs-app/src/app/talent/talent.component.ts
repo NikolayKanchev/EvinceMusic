@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http/src/client';
+//import { HttpClient } from '@angular/common/http/src/client';
 
 @Component({
   selector: 'app-talent',
@@ -10,15 +10,15 @@ export class TalentComponent implements OnInit {
   selectedFile = null;
 
    onFileSelected(event){
-    // this.selectedFile = event.target.files[0];
+   this.selectedFile = event.target.files[0];
 
    }
    onUpload(){
-    // const fd = new FormData();
-     //fd.append('image', this.selectedFile);
+     const fd = new FormData();
+     fd.append('image', this.selectedFile);
 
    }
-  constructor(/*private http: HttpClient*/) { }
+  constructor() { }
 
   ngOnInit() {
 
