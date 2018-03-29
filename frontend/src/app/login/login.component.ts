@@ -1,0 +1,45 @@
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {FormControl, Validators, FormGroup, FormBuilder} from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
+import { DataService } from '../data.service';
+
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
+})
+export class LoginComponent implements OnInit {
+  private loginForm: FormGroup;
+  hideLogin: boolean;
+
+  constructor(private ds: DataService, private fb: FormBuilder, private authService: AuthService, private router: Router) { }
+
+  onSubmitLogin(loginForm){
+    
+    if(loginForm.valid){
+      this.authService.emailToCheck = loginForm.value.email;
+      this.authService.passwordToCheck = loginForm.value.password;
+
+      this.authService.login().subscribe(() => {
+        this.router.navigateByUrl(this.authService.redirectUrl);
+      })
+    }else{
+      console.log("Form valid: ", loginForm.valid);
+    }
+  }
+
+  ngOnInit() {
+    // this.ds.changeUsername("", false);
+    this.createForm();
+  }
+
+  createForm(): any {
+    this.loginForm = this.fb.group({
+      email: ["", [Validators.required, Validators.email]],
+      password: ["", Validators.required]
+    })
+  }
+
+}

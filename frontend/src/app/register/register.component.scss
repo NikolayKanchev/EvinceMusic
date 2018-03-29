@@ -1,0 +1,172 @@
+$base: rgb(35, 4, 119);
+$text: #555;
+$invalid: #E91E63;
+$width: 400px;
+$cubic: cubic-bezier(.64,.09,.08,1);
+
+html, body {
+  overflow-x: hidden;
+}
+
+html, body, form, span{
+    box-sizing: border-box;
+    background-color: white
+}
+
+form {
+    background-color: #FAFAFA;  
+}
+
+h2 {
+    width: 80%;
+    padding: 15px;
+    color: white;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.05);
+    border-radius: 3px 3px 0 0;
+    text-align: center;
+    margin-left: 2em;
+    margin-right: 2em;
+    &:hover { 
+        transform: translateY(-2px);
+        box-shadow: 0 5px 6px 0 rgba(0,0,0,0.2);
+      }
+  }
+
+  #facebook {
+    background: #3B5998;
+  }
+
+  #spotify {
+    background: #1ed760;
+  }
+
+form {
+  font-family: 'roboto', sans-serif;
+  width: $width + 60px;
+  margin: 7px auto 0;
+  box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.2);
+  padding: 0 0 22px;
+  border-radius: 3px;
+  color: $text;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  font: inherit;
+  transition: transform 0.3s ease-in-out,
+    font-size 0.3s ease-in-out,
+    visibility 0.3s ease-in-out;
+}
+
+input,
+textarea {
+  font: inherit;
+  font-size: 0.8em;
+  margin: 0px 25px 10px;
+  width: $width;
+  display: block;
+  border: none;
+  padding: 20px 0 10px;
+  border-bottom: solid 1px $base;
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 96%, $base 4%);
+  background-position: -$width 0;
+  background-size: $width 100%;
+  background-repeat: no-repeat;
+  transition: background 0.3s $cubic;
+  resize: none;
+  overflow: hidden; 
+  &:focus::-webkit-input-placeholder {
+    color: $base;
+  }  
+  &:focus, 
+  &:valid {
+    box-shadow: none;
+    outline: none;
+    background-position: 0 0;
+    &::-webkit-input-placeholder {
+      font-size: 0.8em;
+      transform: translateY(-20px);
+      visibility: visible !important;
+      opacity: 1;
+    }
+  }  
+}
+
+button {
+  font-family: 'roboto', sans-serif;
+  transition: transform 0.2s $cubic,
+     box-shadow 0.2s $cubic;
+  border: none;
+  background: red;
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 6px;
+  width: $width;
+  color: white;
+  margin: 10px 0 0 25px;
+  margin-left: 2.4em;
+  box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
+  &:hover { 
+    transform: translateY(-2px);
+    box-shadow: 0 5px 6px 0 rgba(0,0,0,0.2);
+  }
+}
+
+.fa{
+    -webkit-margin-after: 0;
+}
+
+p{
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+    overflow: hidden;
+    margin-top: 15px;
+    margin-bottom: 2px;
+
+}
+
+a{
+  color: rgb(18, 51, 122);
+  text-decoration: underline;
+}
+
+a:hover{
+  color: blue;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-left: 2.5em;
+}
+
+#emptyLine{
+  visibility: hidden;
+}
+
+#requiredFieldsMessage{
+  padding-left: 22%
+}
+
+input{
+  margin-left: 2.4em;
+}
+
+@media only screen and (max-width: 650px) {
+  form, textarea, button{
+    width: 80%;
+    margin-left: 10%;
+    text-align: center;
+  }
+  input{
+    width: 80%;
+    margin-left: 3em;
+  }
+  h2{
+    margin-left: 5%;
+  }
+  button{
+    margin-left: 2%;
+  }
+}
