@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { Material } from './material';
-// import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
 import { DataService } from './data.service';
 
@@ -35,11 +34,11 @@ export function getAuthServiceConfigs() {
       [
         {
           id: FacebookLoginProvider.PROVIDER_ID,
-          provider: new FacebookLoginProvider("1790871907887936")
+          provider: new FacebookLoginProvider("218473048733958")
         },
         {
           id: GoogleLoginProvider.PROVIDER_ID,
-          provider: new GoogleLoginProvider("Your-Google-Client-Id")
+          provider: new GoogleLoginProvider("748841568302-tmtio2sf5t9bm921n0opeg1hni497hr0.apps.googleusercontent.com")
         },
       ]
   );

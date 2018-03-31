@@ -2,8 +2,8 @@
 (submit)="onSubmitLogin(loginForm)">
 
     <br><br>
-    <h2 class="fa fa-facebook" id="facebook" (click)="socialSignIn('facebook')"> Login with Facebook</h2>
-    <h2 href="#" class="fa fa-spotify" id="spotify"> Login wuth spotify</h2>
+    <h2 class="fa fa-facebook" id="facebook" (click)="socialSignIn('facebook')"> Sign in with Facebook</h2>
+    <h2 href="#" class="fa" id="google" (click)="socialSignIn('google')"><div id="image"></div> Sign in with Google</h2>
     <p id="or">- or -</p>
 
     <input formControlName="email" id="email" placeholder="E-mail" type="email" value="" required>
