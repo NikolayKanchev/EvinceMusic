@@ -41,7 +41,7 @@ export class DataService {
   
   getLoggedUser(emailToCheck: string, passwordTocheck: string): User {
     for(let u of this.users){
-      if (u.email === emailToCheck && u.password === passwordTocheck){
+      if ((u.email === emailToCheck && u.password === passwordTocheck) || (u.email === emailToCheck && passwordTocheck === "validated_with_social_media")){
         return u;
       }
     }

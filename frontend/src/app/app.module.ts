@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { Material } from './material';
-import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
 import { DataService } from './data.service';
 
@@ -21,7 +20,30 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { AdminpageComponent } from './adminpage/adminpage.component';
 import { AccSettingsComponent } from './acc-settings/acc-settings.component';
+import {
+  SocialLoginModule,
+  AuthServiceConfig,
+  GoogleLoginProvider,
+  FacebookLoginProvider,
+} from "angular5-social-login";
+import { Auth1Service } from './auth1.service';
 
+// Configs 
+export function getAuthServiceConfigs() {
+  let config = new AuthServiceConfig(
+      [
+        {
+          id: FacebookLoginProvider.PROVIDER_ID,
+          provider: new FacebookLoginProvider("218473048733958")
+        },
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider("748841568302-tmtio2sf5t9bm921n0opeg1hni497hr0.apps.googleusercontent.com")
+        },
+      ]
+  );
+  return config;
+}
 
 @NgModule({
   declarations: [
@@ -45,9 +67,11 @@ import { AccSettingsComponent } from './acc-settings/acc-settings.component';
     Material,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SocialLoginModule
   ],
-  providers: [AuthService, AuthGuard, DataService],
+  providers: [Auth1Service, AuthGuard, DataService, 
+    {provide: AuthServiceConfig, useFactory: getAuthServiceConfigs}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

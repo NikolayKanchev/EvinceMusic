@@ -22,7 +22,7 @@ h2 {
     width: 80%;
     padding: 20px;
     color: white;
-    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.05);
+    box-shadow: 0 1px 1px 0 #c2c2c2;
     border-radius: 3px 3px 0 0;
     text-align: center;
     margin-left: 1.5em;
@@ -37,8 +37,20 @@ h2 {
       background: #3B5998;
   }
 
-  #spotify {
-    background: #1ed760;
+  #google {   
+    display: flex;
+    border-radius: 0%;
+    background: rgb(236, 236, 236);
+    color: black;
+  }
+
+  #image{
+    height: 15px;
+    width: 15px;
+    background-image: url('google.png');
+    background-size: cover;
+    margin-left: 6.8em;
+    margin-right: 0.2em;
   }
 
 form {

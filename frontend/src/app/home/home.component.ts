@@ -15,7 +15,7 @@ import { trigger, state, style, transition, animate, keyframes} from '@angular/a
         opacity: 0
       })),
       transition('show => hide', animate('600ms ease-out')),
-      transition('hide => show', animate('1000ms ease-in'))
+      transition('hide => show', animate('2000ms ease-in'))
     ])
   ]
 })
@@ -29,6 +29,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    setTimeout(() => this.show = true, 1000);
+    setTimeout(() => this.show = true, 500);
   }
 }
