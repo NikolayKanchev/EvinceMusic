@@ -6,8 +6,11 @@
       <button mat-button routerLink="/professionalservices">Professional Services</button>
       <button mat-button routerLink="/promote">Promotions</button>
       <button mat-button routerLink="/talent">Talent Pool</button>
-      <button mat-button routerLink="/globalpartnership">Global Partnership</button>
       <button mat-button routerLink="/contacts">Contacts</button>
+      <a id="facebook" href="https://www.facebook.com/OfficialEvince/"><i class="fa fa-facebook"></i></a>
+      <a id="twetter" href="https://twitter.com/evinceofficial"><i class="fa fa-twitter"></i></a>
+      <a id="instagram" href="https://www.instagram.com/evincemusic/"><i class="fa fa-instagram"></i></a>
+      <a id="google" href="https://plus.google.com/117656623508682121112"><i class="fa fa-google-plus"></i></a>
       <button mat-button routerLink="/login" *ngIf="!hideLogin">Log In</button>
       <mat-form-field id="drop_down" *ngIf="hideLogin">
         <mat-select placeholder="{{ username }}">
@@ -36,10 +39,6 @@
         <button mat-menu-item>
           <mat-icon>grade</mat-icon>
           <span>Talent Pool</span>
-        </button>
-        <button mat-menu-item routerLink="/globalpartnership">
-          <mat-icon>language</mat-icon>
-          <span>Global Partnership</span>
         </button>
         <button mat-menu-item routerLink="/contacts">
           <mat-icon>contacts</mat-icon>

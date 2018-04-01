@@ -73,7 +73,37 @@ button{
   font-weight: 900;
 }
 
+// -*************************************-
+#facebook, #twetter, #instagram, #google{
+  width: 1em;
+  border-radius: 50%;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-left: 0.5em;
 
+  border: 1.5px solid black;
+  cursor: pointer;
+  color: black;
+  &:hover { 
+    background: black;
+    color: white;
+  }
+}
+
+#facebook{
+  padding-left: 12px;
+  padding-right: 5px;
+}
+
+#google{
+  padding-left: 5px;
+  padding-right: 9px;
+}
+
+#instagram{
+  padding-left: 8px;
+  padding-right: 6px;
+}
 
 
   

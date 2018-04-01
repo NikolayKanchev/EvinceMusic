@@ -9,7 +9,6 @@ import { DataService } from './data.service';
 
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
-import { GlobalpartnershipComponent } from './globalpartnership/globalpartnership.component';
 import { PromoteComponent } from './promote/promote.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfessionalServicesComponent } from './professional-services/professional-services.component';
@@ -50,7 +49,6 @@ export function getAuthServiceConfigs() {
     AppComponent,
     LoginComponent,
     HomeComponent,
-    GlobalpartnershipComponent,
     PromoteComponent,
     RegisterComponent,
     ProfessionalServicesComponent,
