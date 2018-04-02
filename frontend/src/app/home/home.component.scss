@@ -3,8 +3,8 @@ $cubic: cubic-bezier(.64,.09,.08,1);
 .main-container{
     // margin-top: 9%;
     padding-top: 10em;
-    opacity: 0.7;
-    height: 15em;
+    // opacity: 0.7;
+    height: 8em;
     // background-color: black;
     // background-color: #FFF;
     // box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.4);
@@ -27,13 +27,13 @@ $cubic: cubic-bezier(.64,.09,.08,1);
   transition: transform 0.2s $cubic,
   box-shadow 0.2s $cubic;
   border: none;
-  border: 1px solid #FAFAFA;
+  border: 1px solid white;
   background: black;
   cursor: pointer;
   border-radius: 5px;
   padding: 6px;
   width: 80px;
-  color: #FAFAFA;
+  color: white;
   margin: 3px 0 0;
   margin-left: 2.2em;
 //   box-shadow: 0 3px 6px 0 #FAFAFA;
@@ -67,7 +67,7 @@ html, body {
 html, body, .card, span{
     box-sizing: border-box;
     // background-color: white
-    background-color: #FAFAFA
+    background-color: white;
 }
 
 .card {
@@ -78,7 +78,7 @@ html, body, .card, span{
   padding: 0 0 30px;
   border-radius: 3px;
   color: $text;
-  opacity: 0.9;
+//   opacity: 0.9;
 }
 
 button {
@@ -148,14 +148,13 @@ img {
 .img-container{
     overflow: hidden;
     border-radius: 3px;
-    background: #FAFAFA;
-
+    background: white;
+    padding: 2px;
 }
 
 #img-partnership, #text{
     width: 35em;
-    // background: white;
-    background: #FAFAFA;
+    background: white;
     margin-left: 1.5%;
     margin-right: 1.5%;
     border-radius: 3px;
@@ -176,7 +175,6 @@ img {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    opacity: 0.9;
 }
 
 #small{
