@@ -40,7 +40,7 @@
 
 .mat-icon-button{
   color: #212121;
-  box-shadow: 0 5px 6px 0 rgba(0,0,0,0.4);
+  // box-shadow: 0 5px 6px 0 rgba(0,0,0,0.4);
   width: 6em;
   display: none;
 }
@@ -98,6 +98,7 @@ button{
 #google{
   padding-left: 5px;
   padding-right: 9px;
+  margin-right: 0.5em;
 }
 
 #instagram{

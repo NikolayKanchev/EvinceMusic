@@ -69,7 +69,8 @@ export function getAuthServiceConfigs() {
     SocialLoginModule
   ],
   providers: [Auth1Service, AuthGuard, DataService, 
-    {provide: AuthServiceConfig, useFactory: getAuthServiceConfigs}],
+    {provide: AuthServiceConfig, useFactory: getAuthServiceConfigs}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

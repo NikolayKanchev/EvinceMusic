@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit {
 
   constructor(private ds: DataService, private fb: FormBuilder, private authService: Auth1Service, private socialAuthService: AuthService, private router: Router) { }
 
-
   public socialSignIn(socialPlatform : string) {
     let socialPlatformProvider;
     if(socialPlatform == "facebook"){
@@ -43,7 +42,26 @@ export class LoginComponent implements OnInit {
       }
     );
   }
-
+  // public socialSignIn(socialPlatform : string) {
+  //   let socialPlatformProvider;
+  //   if(socialPlatform == "facebook"){
+  //     socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
+  //   }else if(socialPlatform == "google"){
+  //     socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
+  //   }
+    
+  //   this.socialAuthService.signIn(socialPlatformProvider).then(
+  //     (userData) => {
+  //       console.log(socialPlatform+" sign in data : " , userData);
+  //       // Now sign-in with userData
+        // this.authService.emailToCheck = userData.email;
+        // this.authService.passwordToCheck = "validated_with_social_media";
+        // this.authService.login().subscribe(() => {
+        //   this.router.navigateByUrl(this.authService.redirectUrl);
+  //       })
+  //     }
+  //   );
+  // }
 
   onSubmitLogin(loginForm){
     
@@ -69,5 +87,4 @@ export class LoginComponent implements OnInit {
       password: ["", Validators.required]
     })
   }
-
 }
