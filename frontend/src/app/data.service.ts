@@ -26,7 +26,14 @@ export class DataService {
       username: 'admin',
       email: 'admin@yahoo.com',
       password: '1234'
-    }
+    },
+    {
+      firstName: 'Nikolay',
+      lastName: 'Kanchev',
+      username: 'nik',
+      email: 'nikolaj.kanchev@gmail.com',
+      password: '1234'
+    },
   ];
  
   constructor() { }

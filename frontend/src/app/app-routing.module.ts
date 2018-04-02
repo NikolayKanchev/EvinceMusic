@@ -14,15 +14,14 @@ import { AccSettingsComponent } from './acc-settings/acc-settings.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent, children: [
-    { path: 'promote', component: PromoteComponent}
-  ]},
+  { path: 'home', component: HomeComponent},
   { path: 'login', component: LoginComponent},
   { path: 'login/register', component: RegisterComponent},
   { path: 'login/resetpassword', component: ResetpasswordComponent},
   { path: 'contacts', component: ContactsComponent},
   { path: 'promote/register', component: RegisterComponent },
   { path: 'professionalservices', component: ProfessionalServicesComponent},
+  { path: 'promote', component: PromoteComponent},
   { path: 'talent', component: TalentComponent},
   { path: 'adminpage', component: AdminpageComponent},
   { path: 'acc-settings', component: AccSettingsComponent}

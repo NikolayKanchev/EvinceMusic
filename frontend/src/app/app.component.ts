@@ -12,6 +12,7 @@ export class AppComponent implements OnInit{
 
   username: String;
   hideLogin: boolean;
+  userImage: string;
 
   constructor(private authService: Auth1Service){}
 

@@ -38,7 +38,7 @@ export class Auth1Service{
                 this.isLoggedIn = true;
 
                 this.changeUsername(this.loggedUser.username, true);
-
+                
                 if(this.redirectUrl === undefined){
                     this.redirectUrl = "/home"
                 }
