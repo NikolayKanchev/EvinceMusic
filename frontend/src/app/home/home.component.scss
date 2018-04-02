@@ -2,8 +2,11 @@ $cubic: cubic-bezier(.64,.09,.08,1);
 
 .main-container{
     padding-top: 10em;
-    opacity: 0.9;
-    height: 15em;
+    // opacity: 0.7;
+    height: 8em;
+    // background-color: black;
+    // background-color: #FFF;
+    // box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.4);
 }
 
 .transperant{
@@ -23,13 +26,13 @@ $cubic: cubic-bezier(.64,.09,.08,1);
   transition: transform 0.2s $cubic,
   box-shadow 0.2s $cubic;
   border: none;
-  border: 1px solid #FAFAFA;
+  border: 1px solid white;
   background: black;
   cursor: pointer;
   border-radius: 5px;
   padding: 6px;
   width: 80px;
-  color: #FAFAFA;
+  color: white;
   margin: 3px 0 0;
   margin-left: 2.2em;
   &:hover { 
