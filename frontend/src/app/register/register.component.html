@@ -1,8 +1,8 @@
 <form [formGroup]="registerForm" novalidate
-(submit)="onSubmitLogin(registerForm)">
+(submit)="onSubmitRegister(registerForm)">
     <br>
-    <h2 class="fa fa-facebook" id="facebook"> Continue with Facebook</h2>
-    <h2 href="#" class="fa" id="google"><div id="image"></div> Continue with Google</h2>
+    <h2 class="fa fa-facebook" id="facebook" (click)="socialSignIn('facebook')"> Continue with Facebook</h2>
+    <h2 href="#" class="fa" id="google" (click)="socialSignIn('google')"><div id="image"></div> Continue with Google</h2>
     <p>
         - or -
         <br>
@@ -14,11 +14,17 @@
     <input formControlName="email" id="email" placeholder="Email address" type="email" value="" required>
     <input formControlName="password" placeholder="Password" type="password" value="" required>
     <input formControlName="retypePassword" placeholder="Re-enter password" type="password" value="" required>
+    <span class="error" *ngIf="userExist">
+            A user with this e-mail exist !!!
+        </span>
+    <span class="error" *ngIf="(!registerForm.controls.password.valid || !registerForm.controls.retypePassword.valid) && registerForm.controls.retypePassword.touched">
+            Check your password !!!
+        </span>
     <span class="error" *ngIf="!registerForm.controls.email.valid && registerForm.controls.email.touched">
         Please enter a valid e-mail !!!
     </span>
     <span class="error" id="emptyLine" *ngIf="(registerForm.controls.email.valid && registerForm.controls.email.touched) || !registerForm.controls.email.touched">ooooooooooooooooooooooo</span>
-    <span class="error" id="requiredFieldsMessage" *ngIf="!registerForm.valid && registerForm.touched">
+    <span class="error" id="requiredFieldsMessage" *ngIf="!registerForm.valid && registerForm.touched && registerForm.controls.retypePassword.valid">
           Fill out all the fields !!!
     </span>
     <p>

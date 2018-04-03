@@ -53,5 +53,15 @@ export class DataService {
       }
     }
   }
+
+  doesUserExist(email: String): boolean {
+    let bul = false
+    for(let u of this.users){
+      if (u.email === email){
+        bul =  true;
+      }
+    }
+    return bul;
+  }
 }
  

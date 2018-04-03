@@ -59,8 +59,9 @@
 
 .mat-form-field{
   z-index: 9999999;
-  font-size: 12px;
-  width: 8em;
+  font-size: 14px;
+  width: 6em;
+  margin-left: 1.5em;
 }
 
 #smallMenuDropDown{
@@ -75,6 +76,7 @@ button{
 
 #smallMenuDropDown, #drop_down{
   font-weight: 900;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 // -*************************************-

@@ -11,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { AuthGuard } from './auth.guard';
 import { AdminpageComponent } from './adminpage/adminpage.component';
 import { AccSettingsComponent } from './acc-settings/acc-settings.component';
+import { UserExistComponent } from './user-exist/user-exist.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -19,11 +20,11 @@ const routes: Routes = [
   { path: 'login/register', component: RegisterComponent},
   { path: 'login/resetpassword', component: ResetpasswordComponent},
   { path: 'contacts', component: ContactsComponent},
-  { path: 'promote/register', component: RegisterComponent },
   { path: 'professionalservices', component: ProfessionalServicesComponent},
   { path: 'promote', component: PromoteComponent},
   { path: 'talent', component: TalentComponent},
   { path: 'adminpage', component: AdminpageComponent},
+  { path: 'user-exist', component: UserExistComponent},
   { path: 'acc-settings', component: AccSettingsComponent}
 ];
 

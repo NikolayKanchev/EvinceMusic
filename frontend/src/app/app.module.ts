@@ -26,6 +26,7 @@ import {
   FacebookLoginProvider,
 } from "angular5-social-login";
 import { Auth1Service } from './auth1.service';
+import { UserExistComponent } from './user-exist/user-exist.component';
 
 // Configs 
 export function getAuthServiceConfigs() {
@@ -56,7 +57,8 @@ export function getAuthServiceConfigs() {
     ContactsComponent,
     ResetpasswordComponent,
     AdminpageComponent,
-    AccSettingsComponent
+    AccSettingsComponent,
+    UserExistComponent,
   ],
   imports: [
     BrowserModule,
