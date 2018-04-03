@@ -11,7 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { AuthGuard } from './auth.guard';
 import { AdminpageComponent } from './adminpage/adminpage.component';
 import { AccSettingsComponent } from './acc-settings/acc-settings.component';
-import { UserExistComponent } from './user-exist/user-exist.component';
+import { ErrorComponent } from './error/error.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -24,8 +24,11 @@ const routes: Routes = [
   { path: 'promote', component: PromoteComponent},
   { path: 'talent', component: TalentComponent},
   { path: 'adminpage', component: AdminpageComponent},
-  { path: 'user-exist', component: UserExistComponent},
-  { path: 'acc-settings', component: AccSettingsComponent}
+  { path: 'error', component: ErrorComponent},
+  { path: 'acc-settings', component: AccSettingsComponent},
+  { path: 'error/login', redirectTo: 'login', pathMatch: 'full'},
+  { path: 'error/register', redirectTo: 'login/register', pathMatch: 'full'},
+  { path: 'error/resetpassword', redirectTo: 'login/resetpassword', pathMatch: 'full'}
 ];
 
 @NgModule({

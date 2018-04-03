@@ -10,11 +10,12 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class Auth1Service{
-   redirectUrl: string; //- will store the attempted url
-   isLoggedIn = false;
-   loggedUser: any;
-   emailToCheck: string;
-   passwordToCheck: string;
+    errorMessage: string;
+    redirectUrl: string = ""; //- will store the attempted url
+    isLoggedIn = false;
+    loggedUser: any;
+    emailToCheck: string;
+    passwordToCheck: string;
 
 //    ****** for the register part ******
    userOnRegister: any = undefined;
@@ -25,6 +26,14 @@ export class Auth1Service{
    email: string;
    password: string;
 //    ******************************
+
+    private errorMessageSource = new BehaviorSubject<String>("");
+    currentErrorMessage = this.errorMessageSource.asObservable();
+
+    changeErrorMessage(errorMessage: string){
+        this.errorMessageSource.next(errorMessage);
+    }
+
 
     private usernameSource = new BehaviorSubject<String>("");
     private hideLoginSource = new BehaviorSubject<boolean>(false);
@@ -46,17 +55,21 @@ export class Auth1Service{
 
             if(this.loggedUser === undefined){
                 this.isLoggedIn = false;
+                this.router.navigateByUrl(this.redirectUrl = 'error');
+                this.changeErrorMessage("It seems you need to register first !");
             }else{
                 this.isLoggedIn = true;
 
                 this.changeUsername(this.loggedUser.username, true);
                 
-                if(this.redirectUrl === undefined){
-                    this.redirectUrl = "/home"
+                if(this.redirectUrl === "error"){
+                    this.router.navigateByUrl(this.redirectUrl = 'home');
+                }else{
+                    this.router.navigateByUrl(this.redirectUrl);
                 }
                 
                 if(this.loggedUser.username === "admin"){
-                    this.redirectUrl = "/adminpage"
+                    this.router.navigateByUrl(this.redirectUrl = 'admin');
                 }
             }
          });
@@ -69,11 +82,9 @@ export class Auth1Service{
    register(): Observable<boolean>{
        
     return Observable.of(true).do(val => {
-        // this.userOnRegister = this.ds.getLoggedUser(this.email, this.password);
 
         this.userExist = this.ds.doesUserExist(this.email);
 
-        // if (this.userOnRegister !== undefined){
         if (!this.userExist){
             this.userOnRegister = new User();
             this.userOnRegister.firstName = this.firstName;
@@ -96,7 +107,13 @@ export class Auth1Service{
             })
             return true;
         }else{
-            this.router.navigateByUrl(this.redirectUrl = 'user-exist');
+            if (this.isLoggedIn){
+                this.router.navigateByUrl(this.redirectUrl = 'home');
+            }else{
+                this.router.navigateByUrl(this.redirectUrl = 'error');
+                this.changeErrorMessage("...There is an account with the same e-mail !!!... Try to login insted !");
+            }
+            
             return false;
         }        
      });

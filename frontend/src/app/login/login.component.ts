@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
         this.authService.emailToCheck = userData.email;
         this.authService.passwordToCheck = "validated_with_social_media";
         this.authService.login().subscribe(() => {
-          this.router.navigateByUrl(this.authService.redirectUrl);
+          // this.router.navigateByUrl(this.authService.redirectUrl);
         })
       }
     );
@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
       this.authService.passwordToCheck = loginForm.value.password;
 
       this.authService.login().subscribe(() => {
-        this.router.navigateByUrl(this.authService.redirectUrl);
+        // this.router.navigateByUrl(this.authService.redirectUrl);
       })
     }else{
       console.log("Form valid: ", loginForm.valid);
