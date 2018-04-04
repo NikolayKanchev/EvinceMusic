@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { Material } from './material';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard, UserAccessGuard, AdminAccess } from './auth.guard';
 import { DataService } from './data.service';
 
 import { LoginComponent } from './login/login.component';
@@ -14,7 +14,6 @@ import { RegisterComponent } from './register/register.component';
 import { ProfessionalServicesComponent } from './professional-services/professional-services.component';
 import { TalentComponent } from './talent/talent.component';
 import { ContactsComponent } from './contacts/contacts.component';
-import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { AdminpageComponent } from './adminpage/adminpage.component';
@@ -27,6 +26,7 @@ import {
 } from "angular5-social-login";
 import { Auth1Service } from './auth1.service';
 import { ErrorComponent } from './error/error.component';
+import { ResetpasswordComponent } from './login/resetpassword/resetpassword.component';
 
 // Configs 
 export function getAuthServiceConfigs() {
@@ -70,7 +70,7 @@ export function getAuthServiceConfigs() {
     HttpClientModule,
     SocialLoginModule
   ],
-  providers: [Auth1Service, AuthGuard, DataService, 
+  providers: [Auth1Service, AuthGuard, DataService, UserAccessGuard, AdminAccess,
     {provide: AuthServiceConfig, useFactory: getAuthServiceConfigs}
   ],
   bootstrap: [AppComponent]

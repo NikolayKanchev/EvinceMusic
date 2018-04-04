@@ -2,8 +2,8 @@
     <br>
     <h3>{{ errorMessage }}</h3>
     <br><br>
-    <h2 routerLink="login"> Log In </h2>
-    <h2 routerLink="register"> Register </h2>
-    <h2 routerLink="resetpassword"> Reset your password </h2>
+    <h2 routerLink="login" *ngIf="!hideBtn"> Log In </h2>
+    <h2 routerLink="register" *ngIf="!hideBtn"> Register </h2>
+    <h2 routerLink="home" *ngIf="hideBtn"> Home </h2>
     <br><br>
 </div>

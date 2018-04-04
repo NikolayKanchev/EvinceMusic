@@ -1,5 +1,5 @@
 <form [formGroup]="loginForm" novalidate
-(submit)="onSubmitLogin(loginForm)">
+(submit)="onSubmitLogin(loginForm)" *ngIf="!hideLogin">
 
     <br><br>
     <h2 class="fa fa-facebook" id="facebook" (click)="socialSignIn('facebook')"> Sign in with Facebook</h2>
@@ -30,3 +30,4 @@
         </p>
     </div>
 </form>
+<router-outlet></router-outlet>

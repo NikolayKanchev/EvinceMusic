@@ -56,7 +56,7 @@ export class Auth1Service{
             if(this.loggedUser === undefined){
                 this.isLoggedIn = false;
                 this.router.navigateByUrl(this.redirectUrl = 'error');
-                this.changeErrorMessage("It seems you need to register first !");
+                this.changeErrorMessage("It seems, that you need to register first !");
             }else{
                 this.isLoggedIn = true;
 
@@ -69,7 +69,7 @@ export class Auth1Service{
                 }
                 
                 if(this.loggedUser.username === "admin"){
-                    this.router.navigateByUrl(this.redirectUrl = 'admin');
+                    this.router.navigateByUrl(this.redirectUrl = 'adminpage');
                 }
             }
          });
@@ -118,4 +118,16 @@ export class Auth1Service{
         }        
      });
     }
+
+    isManager(): boolean {
+        if(this.isLoggedIn && this.loggedUser.email === "admin@yahoo.com"){
+            return true;
+        }else{
+            this.router.navigate(['error']);
+            this.changeErrorMessage("You don't have Admin privileges !!!");
+            return false;
+        }
+    }
 }
+
+

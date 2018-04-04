@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {FormControl, Validators, FormGroup, FormBuilder} from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, NavigationStart } from '@angular/router';
 import { Auth1Service } from '../auth1.service';
 import { DataService } from '../data.service';
 import {
@@ -58,6 +58,15 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.router.events.subscribe((events) => {
+      if (events instanceof NavigationStart) {
+        if (events.url === '/' || events.url === '/login') {
+          return this.hideLogin = false;
+        } else {
+          this.hideLogin = true;
+        }
+      }
+    });
     this.createForm();
   }
 

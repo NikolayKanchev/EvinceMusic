@@ -22,3 +22,25 @@ export class AuthGuard implements CanActivate {
         this.router.navigate(['/login'])
     }
 }
+
+@Injectable()
+export class UserAccessGuard implements CanActivate {
+    constructor(private authService: Auth1Service) {
+    }
+
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+        return route.data['onlyGuests'] != this.authService.isLoggedIn;
+    }
+}
+
+@Injectable()
+export class AdminAccess implements CanActivate {
+    constructor(private authService: Auth1Service, private router: Router) {}
+
+    canActivate() {
+    let isManager: boolean = this.authService.isManager();
+    if (!isManager) {
+    }
+    return isManager;
+  }
+}

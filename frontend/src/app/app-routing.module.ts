@@ -6,27 +6,32 @@ import { PromoteComponent } from './promote/promote.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { ProfessionalServicesComponent } from './professional-services/professional-services.component';
 import { TalentComponent } from './talent/talent.component';
-import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { RegisterComponent } from './register/register.component';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard, UserAccessGuard, AdminAccess} from './auth.guard';
 import { AdminpageComponent } from './adminpage/adminpage.component';
 import { AccSettingsComponent } from './acc-settings/acc-settings.component';
 import { ErrorComponent } from './error/error.component';
+import { ResetpasswordComponent } from './login/resetpassword/resetpassword.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent},
-  { path: 'login', component: LoginComponent},
+  { path: 'login', component: LoginComponent,
+  data: { onlyGuests: true },
+      canActivate: [ UserAccessGuard ],
+   children: [
+    { path: 'resetpassword', component: ResetpasswordComponent},
+  ]},
   { path: 'login/register', component: RegisterComponent},
-  { path: 'login/resetpassword', component: ResetpasswordComponent},
   { path: 'contacts', component: ContactsComponent},
   { path: 'professionalservices', component: ProfessionalServicesComponent},
   { path: 'promote', component: PromoteComponent},
   { path: 'talent', component: TalentComponent},
-  { path: 'adminpage', component: AdminpageComponent},
+  { path: 'adminpage', component: AdminpageComponent, canActivate: [AdminAccess]},
   { path: 'error', component: ErrorComponent},
   { path: 'acc-settings', component: AccSettingsComponent},
   { path: 'error/login', redirectTo: 'login', pathMatch: 'full'},
+  { path: 'error/home', redirectTo: 'home', pathMatch: 'full'},
   { path: 'error/register', redirectTo: 'login/register', pathMatch: 'full'},
   { path: 'error/resetpassword', redirectTo: 'login/resetpassword', pathMatch: 'full'}
 ];
