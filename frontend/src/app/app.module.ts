@@ -27,6 +27,7 @@ import {
 import { Auth1Service } from './auth1.service';
 import { ErrorComponent } from './error/error.component';
 import { ResetpasswordComponent } from './login/resetpassword/resetpassword.component';
+import { FileUploadModule } from 'ng5-fileupload';
 
 // Configs 
 export function getAuthServiceConfigs() {
@@ -68,7 +69,8 @@ export function getAuthServiceConfigs() {
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    SocialLoginModule
+    SocialLoginModule,
+    FileUploadModule
   ],
   providers: [Auth1Service, AuthGuard, DataService, UserAccessGuard, AdminAccess,
     {provide: AuthServiceConfig, useFactory: getAuthServiceConfigs}
