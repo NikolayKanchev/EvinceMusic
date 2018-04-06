@@ -2,6 +2,7 @@
     <mat-toolbar-row>
       <div mat-card-avatar id="logo"></div>
       <span class="example-spacer"></span>
+      <button mat-button routerLink="/adminpage" *ngIf="username=='admin'">Admin page</button>
       <button mat-button routerLink="/home" mat-button >Home</button>
       <button mat-button routerLink="/professionalservices">Professional Services</button>
       <button mat-button routerLink="/promote">Promotions</button>
