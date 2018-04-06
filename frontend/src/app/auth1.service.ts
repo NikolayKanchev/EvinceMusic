@@ -129,6 +129,11 @@ export class Auth1Service{
             return false;
         }
     }
+
+    public getUsers(): Observable<User[]> {
+        let users : User[] = this.ds.getUsers();
+        return Observable.of(users).delay(500);
+      }
 }
 
 
