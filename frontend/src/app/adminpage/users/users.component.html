@@ -1,0 +1,9 @@
+<mat-list *ngFor="let user of users">
+  <mat-list-item>
+    <app-user 
+      [userInput]="user"
+      (userClicked)="onUserClicked($event)">
+    </app-user>
+</mat-list-item>
+<mat-divider></mat-divider>
+</mat-list>

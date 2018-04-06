@@ -77,6 +77,7 @@ export class Auth1Service{
 
    logout(): void{
        this.isLoggedIn = false;
+       this.changeUsername("", false);       
    }
 
    register(): Observable<boolean>{

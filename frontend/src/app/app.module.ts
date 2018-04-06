@@ -27,6 +27,9 @@ import {
 import { Auth1Service } from './auth1.service';
 import { ErrorComponent } from './error/error.component';
 import { ResetpasswordComponent } from './login/resetpassword/resetpassword.component';
+import { UsersComponent } from './adminpage/users/users.component';
+import { ManageHomePageComponent } from './adminpage/manage-home-page/manage-home-page.component';
+import { UserComponent } from './adminpage/users/user/user.component';
 
 // Configs 
 export function getAuthServiceConfigs() {
@@ -59,6 +62,9 @@ export function getAuthServiceConfigs() {
     AdminpageComponent,
     AccSettingsComponent,
     ErrorComponent,
+    UsersComponent,
+    ManageHomePageComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,

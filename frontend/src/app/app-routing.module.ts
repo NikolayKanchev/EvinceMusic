@@ -12,6 +12,8 @@ import { AdminpageComponent } from './adminpage/adminpage.component';
 import { AccSettingsComponent } from './acc-settings/acc-settings.component';
 import { ErrorComponent } from './error/error.component';
 import { ResetpasswordComponent } from './login/resetpassword/resetpassword.component';
+import { UsersComponent } from './adminpage/users/users.component';
+import { ManageHomePageComponent } from './adminpage/manage-home-page/manage-home-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -27,7 +29,10 @@ const routes: Routes = [
   { path: 'professionalservices', component: ProfessionalServicesComponent},
   { path: 'promote', component: PromoteComponent},
   { path: 'talent', component: TalentComponent},
-  { path: 'adminpage', component: AdminpageComponent, canActivate: [AdminAccess]},
+  { path: 'adminpage', component: AdminpageComponent, canActivate: [AdminAccess]},{ path: 'adminpage', component: AdminpageComponent, canActivate: [AdminAccess], children:[
+    { path: 'users', component: UsersComponent},
+    { path: 'manage-home-page', component: ManageHomePageComponent}
+  ]},
   { path: 'error', component: ErrorComponent},
   { path: 'acc-settings', component: AccSettingsComponent},
   { path: 'error/login', redirectTo: 'login', pathMatch: 'full'},
