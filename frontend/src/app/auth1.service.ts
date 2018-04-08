@@ -77,6 +77,7 @@ export class Auth1Service{
 
    logout(): void{
        this.isLoggedIn = false;
+       this.changeUsername("", false);       
    }
 
    register(): Observable<boolean>{
@@ -128,6 +129,11 @@ export class Auth1Service{
             return false;
         }
     }
+
+    public getUsers(): Observable<User[]> {
+        let users : User[] = this.ds.getUsers();
+        return Observable.of(users).delay(500);
+      }
 }
 
 
