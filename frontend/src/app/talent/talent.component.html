@@ -1,12 +1,8 @@
 
-<body>
-<h2></h2>
-<p></p>
-<p></p>
-<div id="text">
-<input type="file" (change)="onFileSelected($event)" id="choose" >
-<button type="button" (click)="onUpload()" id="btn">Upload</button>
-Status: <progress min="0" max="100" value="60"> 
-</progress>
-</div>
-</body>
+    <div id="text">
+    <input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
+    <button type="button" id="btn" class="btn btn-success btn-s" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+        Upload
+    </button>
+    
+   </div>

@@ -7,6 +7,7 @@ import { Material } from './material';
 import { AuthGuard, UserAccessGuard, AdminAccess } from './auth.guard';
 import { DataService } from './data.service';
 
+
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { PromoteComponent } from './promote/promote.component';
@@ -27,7 +28,10 @@ import {
 import { Auth1Service } from './auth1.service';
 import { ErrorComponent } from './error/error.component';
 import { ResetpasswordComponent } from './login/resetpassword/resetpassword.component';
-import { FileUploadModule } from 'ng5-fileupload';
+import { FileSelectDirective } from 'ng2-file-upload';
+import { HttpModule } from '@angular/http';
+
+//import { FileuploadService } from './fileupload.service';
 
 // Configs 
 export function getAuthServiceConfigs() {
@@ -60,6 +64,8 @@ export function getAuthServiceConfigs() {
     AdminpageComponent,
     AccSettingsComponent,
     ErrorComponent,
+    FileSelectDirective,
+   
   ],
   imports: [
     BrowserModule,
@@ -70,7 +76,9 @@ export function getAuthServiceConfigs() {
     FormsModule,
     HttpClientModule,
     SocialLoginModule,
-    FileUploadModule
+    HttpModule
+  
+    
   ],
   providers: [Auth1Service, AuthGuard, DataService, UserAccessGuard, AdminAccess,
     {provide: AuthServiceConfig, useFactory: getAuthServiceConfigs}
