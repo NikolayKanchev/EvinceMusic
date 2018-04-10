@@ -4,7 +4,7 @@ import { Http, Response } from '@angular/http';
 import "rxjs/add/operator/do";
 import "rxjs/add/operator/map";
 
-const URL = 'http://localhost:8000/api/uploads';
+const URL = 'http://localhost:3000';
 
 @Component({
   selector: 'app-talent',
