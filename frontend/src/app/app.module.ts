@@ -30,6 +30,9 @@ import { ErrorComponent } from './error/error.component';
 import { ResetpasswordComponent } from './login/resetpassword/resetpassword.component';
 import { FileSelectDirective } from 'ng2-file-upload';
 import { HttpModule } from '@angular/http';
+import { UsersComponent } from './adminpage/users/users.component';
+import { ManageHomePageComponent } from './adminpage/manage-home-page/manage-home-page.component';
+import { UserComponent } from './adminpage/users/user/user.component';
 
 //import { FileuploadService } from './fileupload.service';
 
@@ -65,7 +68,9 @@ export function getAuthServiceConfigs() {
     AccSettingsComponent,
     ErrorComponent,
     FileSelectDirective,
-   
+    UsersComponent,
+    ManageHomePageComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,8 +82,6 @@ export function getAuthServiceConfigs() {
     HttpClientModule,
     SocialLoginModule,
     HttpModule
-  
-    
   ],
   providers: [Auth1Service, AuthGuard, DataService, UserAccessGuard, AdminAccess,
     {provide: AuthServiceConfig, useFactory: getAuthServiceConfigs}
