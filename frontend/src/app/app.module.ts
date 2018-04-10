@@ -64,14 +64,8 @@ export function getAuthServiceConfigs() {
     AdminpageComponent,
     AccSettingsComponent,
     ErrorComponent,
-<<<<<<< HEAD
     FileSelectDirective,
    
-=======
-    UsersComponent,
-    ManageHomePageComponent,
-    UserComponent,
->>>>>>> 6f02f85e33422a980115a1d7c0a09b47aae595ec
   ],
   imports: [
     BrowserModule,
@@ -81,16 +75,11 @@ export function getAuthServiceConfigs() {
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-<<<<<<< HEAD
     SocialLoginModule,
     HttpModule
   
     
   ],
-=======
-    SocialLoginModule
-    ],
->>>>>>> 6f02f85e33422a980115a1d7c0a09b47aae595ec
   providers: [Auth1Service, AuthGuard, DataService, UserAccessGuard, AdminAccess,
     {provide: AuthServiceConfig, useFactory: getAuthServiceConfigs}
   ],
