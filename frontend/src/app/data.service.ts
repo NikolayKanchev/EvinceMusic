@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from './entities/user';
 
-
 @Injectable()
 export class DataService {
 
@@ -9,28 +8,28 @@ export class DataService {
     {
       firstName: 'Nikolay',
       lastName: 'Kanchev',
-      username: 'nik',
+      username: 'NK',
       email: 'nikolay.kanchev@yahoo.com',
       password: '1234'
     },
     {
       firstName: 'Martin',
       lastName: 'Krastev',
-      username: 'marto',
+      username: 'MK',
       email: 'marto@yahoo.com',
       password: '1234'
     },
     {
-      firstName: '',
-      lastName: '',
-      username: 'admin',
+      firstName: 'Nikolay',
+      lastName: 'Kanchev',
+      username: 'ADMIN',
       email: 'admin@yahoo.com',
       password: '1234'
     },
     {
       firstName: 'Nikolay',
       lastName: 'Kanchev',
-      username: 'nik',
+      username: 'NK',
       email: 'nikolaj.kanchev@gmail.com',
       password: '1234'
     },

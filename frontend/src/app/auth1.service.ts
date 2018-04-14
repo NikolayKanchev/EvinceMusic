@@ -7,6 +7,7 @@ import { DataService } from './data.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { User } from './entities/user';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class Auth1Service{
@@ -45,13 +46,26 @@ export class Auth1Service{
         this.hideLoginSource.next(hideLogin);
       }
 
-   constructor(private ds: DataService, private router: Router) { }
+   constructor(private ds: DataService, private router: Router, private http: HttpClient) { }
 
    login(): Observable<boolean>{
        
         return Observable.of(true).do(val => {
             // this.loggedInUser = //what came back from the server.
-            this.loggedUser = this.ds.getLoggedUser(this.emailToCheck, this.passwordToCheck);
+            const req = this.http.post('http://localhost:4000/login',
+            {
+                'email': this.emailToCheck,
+                'password': this.passwordToCheck
+            })
+                .subscribe(
+                    res => {
+                        console.log(res);    
+                },
+                err => {
+                    console.log("Error occured !");                    
+                }
+            );
+            // this.loggedUser = this.ds.getLoggedUser(this.emailToCheck, this.passwordToCheck);
 
             if(this.loggedUser === undefined){
                 this.isLoggedIn = false;
@@ -68,7 +82,7 @@ export class Auth1Service{
                     this.router.navigateByUrl(this.redirectUrl);
                 }
                 
-                if(this.loggedUser.username === "admin"){
+                if(this.loggedUser.username === "ADMIN"){
                     this.router.navigateByUrl(this.redirectUrl = 'adminpage');
                 }
             }
@@ -134,6 +148,8 @@ export class Auth1Service{
         let users : User[] = this.ds.getUsers();
         return Observable.of(users).delay(500);
       }
+
+    
 }
 
 
