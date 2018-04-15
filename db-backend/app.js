@@ -22,6 +22,9 @@ const knex = Knex(knexConfig.development);
 // give the knex connection to objection.js
 Model.knex(knex);
 
+var cors = require('cors')
+app.use(cors())
+
 // convenience object that contains all the models and easy access to knex
 const db = {
     "Knex": knex,
@@ -107,8 +110,8 @@ app.post("/login", function(req, res) {
 
             bcrypt.compare(req.body.password, foundUsers[0].password).then(function(passValid) {
                 if (passValid) {
-                    response.username = foundUsers[0].username;
                     response.status = 200;
+                    response.message = foundUsers[0].username;
                     res.send(response);
                 } else {
                     response.status = 403; // forbidden
@@ -118,7 +121,7 @@ app.post("/login", function(req, res) {
             });
         }
     }).catch(err => {
-        response = 500;
+        response.status = 500;
         response.message = "error connecting or quering the database";
         res.send(response);
     });
@@ -129,12 +132,19 @@ app.get("/get-users", function(req, res) {
 
     db.User.query().select()
     .then(foundUsers => {
+        // response.status = 200;
+        // response.message = "All Users";
+
+        // foundUsers.forEach(element => {
+        //     delete element.id;
+        // });
+
         response.users = foundUsers;
-        response.status = 200;
-        res.send(response);
+        res.send(foundUsers);
     }).catch(err => {
-        response = 500;
+        response.status = 500;
         response.message = "error connecting or quering the database";
+        response.users = foundUsers;
         res.send(response);
     });
 });

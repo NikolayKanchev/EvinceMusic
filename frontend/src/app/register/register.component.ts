@@ -40,7 +40,16 @@ export class RegisterComponent implements OnInit {
 
         this.authService.firstName = nameParts[0];
         this.authService.lastName = nameParts[1];
-        this.authService.username = "" + nameParts[0][0] + nameParts[1][0];
+
+        if(nameParts[0] === undefined && nameParts[1] === undefined){
+          this.authService.username = "Anonymous";
+        }
+        if(nameParts[0] !== undefined && nameParts[1] === undefined){
+          this.authService.username = name.slice(0,2).toUpperCase();
+        }else{
+          this.authService.username = "" + nameParts[0][0] + nameParts[1][0];
+        }
+
         this.authService.email = userData.email;
         this.authService.password = "validated_with_social_media";
         

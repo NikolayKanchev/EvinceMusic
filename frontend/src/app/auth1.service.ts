@@ -8,15 +8,17 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { User } from './entities/user';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { get } from 'selenium-webdriver/http';
 
 @Injectable()
 export class Auth1Service{
     errorMessage: string;
     redirectUrl: string = ""; //- will store the attempted url
     isLoggedIn = false;
-    loggedUser: any;
+    loggedUserUsername: any;
     emailToCheck: string;
     passwordToCheck: string;
+    dbServerURL:string = "http://localhost:3000/";
 
 //    ****** for the register part ******
    userOnRegister: any = undefined;
@@ -52,40 +54,40 @@ export class Auth1Service{
        
         return Observable.of(true).do(val => {
             // this.loggedInUser = //what came back from the server.
-            const req = this.http.post('http://localhost:4000/login',
+            const req = this.http.post<ServerResponce>( this.dbServerURL + 'login',
             {
                 'email': this.emailToCheck,
                 'password': this.passwordToCheck
             })
                 .subscribe(
                     res => {
-                        console.log(res);    
+                        console.log(res);
+
+                        if(res.status === 403){
+                            this.isLoggedIn = false;
+                            this.router.navigateByUrl(this.redirectUrl = 'error');
+                            this.changeErrorMessage("It seems, that you need to register first !");
+                        }else{
+                            this.isLoggedIn = true;
+            
+                            this.changeUsername(res.message, true);
+                            this.loggedUserUsername = res.message;
+                            
+                            if(this.redirectUrl === "error"){
+                                this.router.navigateByUrl(this.redirectUrl = 'home');
+                            }else{
+                                this.router.navigateByUrl(this.redirectUrl);
+                            }
+                            
+                            if(res.message === "ADMIN"){
+                                this.router.navigateByUrl(this.redirectUrl = 'adminpage');
+                            }
+                        }
                 },
                 err => {
                     console.log("Error occured !");                    
                 }
             );
-            // this.loggedUser = this.ds.getLoggedUser(this.emailToCheck, this.passwordToCheck);
-
-            if(this.loggedUser === undefined){
-                this.isLoggedIn = false;
-                this.router.navigateByUrl(this.redirectUrl = 'error');
-                this.changeErrorMessage("It seems, that you need to register first !");
-            }else{
-                this.isLoggedIn = true;
-
-                this.changeUsername(this.loggedUser.username, true);
-                
-                if(this.redirectUrl === "error"){
-                    this.router.navigateByUrl(this.redirectUrl = 'home');
-                }else{
-                    this.router.navigateByUrl(this.redirectUrl);
-                }
-                
-                if(this.loggedUser.username === "ADMIN"){
-                    this.router.navigateByUrl(this.redirectUrl = 'adminpage');
-                }
-            }
          });
    }
 
@@ -98,44 +100,53 @@ export class Auth1Service{
        
     return Observable.of(true).do(val => {
 
-        this.userExist = this.ds.doesUserExist(this.email);
+        this.userOnRegister = new User();
+        this.userOnRegister.firstName = this.firstName;
+        this.userOnRegister.lastName = this.lastName;
+        this.userOnRegister.username = this.username;
+        this.userOnRegister.email = this.email;
+        this.userOnRegister.password = this.password;
 
-        if (!this.userExist){
-            this.userOnRegister = new User();
-            this.userOnRegister.firstName = this.firstName;
-            this.userOnRegister.lastName = this.lastName;
-            this.userOnRegister.username = this.username;
-            this.userOnRegister.email = this.email;
-            this.userOnRegister.password = this.password;
+        // this.userExist = this.ds.doesUserExist(this.email);
+        const req = this.http.post<ServerResponce>(this.dbServerURL + 'signup',
+            this.userOnRegister)
+            .subscribe(
+                res => {
+                    console.log(res);
 
-            this.ds.addUser(this.userOnRegister);
-
-            // ******* the user will be logged in *******
-            this.emailToCheck = this.email;
-            this.passwordToCheck = this.password;
-
-            console.log(this.firstName, this.username, this.email, this.password);
+                    if (res.status === 200){
             
-
-            this.login().subscribe(() => {
-                this.router.navigateByUrl(this.redirectUrl = 'home');
-            })
-            return true;
-        }else{
-            if (this.isLoggedIn){
-                this.router.navigateByUrl(this.redirectUrl = 'home');
-            }else{
-                this.router.navigateByUrl(this.redirectUrl = 'error');
-                this.changeErrorMessage("...There is an account with the same e-mail !!!... Try to login insted !");
-            }
+                        // ******* the user will be logged in *******
+                        this.emailToCheck = this.email;
+                        this.passwordToCheck = this.password;
             
-            return false;
-        }        
-     });
+                        console.log(this.firstName, this.username, this.email, this.password);
+                        
+            
+                        this.login().subscribe(() => {
+                            this.router.navigateByUrl(this.redirectUrl = 'home');
+                        })
+                        return true;
+                    }else{
+                        if (this.isLoggedIn){
+                            this.router.navigateByUrl(this.redirectUrl = 'home');
+                        }else{
+                            this.router.navigateByUrl(this.redirectUrl = 'error');
+                            this.changeErrorMessage("...There is an account with the same e-mail !!!... Try to login insted !");
+                        }
+                        
+                        return false;
+                    }           
+                },
+                err => {
+                    console.log("Error occured !");                    
+                }
+            );
+         });
     }
 
     isManager(): boolean {
-        if(this.isLoggedIn && this.loggedUser.email === "admin@yahoo.com"){
+        if(this.isLoggedIn && this.loggedUserUsername === "ADMIN"){
             return true;
         }else{
             this.router.navigate(['error']);
@@ -145,11 +156,17 @@ export class Auth1Service{
     }
 
     public getUsers(): Observable<User[]> {
-        let users : User[] = this.ds.getUsers();
-        return Observable.of(users).delay(500);
+        return this.http.get<User[]>(this.dbServerURL + 'get-users');
       }
-
-    
 }
 
+interface ServerResponce{
+    status: number,
+    message: string
+}
 
+interface GetUsers{
+    status: number,
+    message: string,
+    users: User[]
+}
