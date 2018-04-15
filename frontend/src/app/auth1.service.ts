@@ -18,7 +18,7 @@ export class Auth1Service{
     loggedUserUsername: any;
     emailToCheck: string;
     passwordToCheck: string;
-    dbServerURL:string = "http://localhost:3000/";
+    dbServerURL:string = "http://localhost:3001/";
 
 //    ****** for the register part ******
    userOnRegister: any = undefined;

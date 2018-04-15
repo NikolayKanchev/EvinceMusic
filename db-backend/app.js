@@ -149,7 +149,7 @@ app.get("/get-users", function(req, res) {
     });
 });
 
-var server = app.listen("3000", function(err) {
+var server = app.listen("3001", function(err) {
     if (err) {
         console.log("Error starting the server", err);
     }
