@@ -31,6 +31,8 @@ import { HttpModule } from '@angular/http';
 import { UsersComponent } from './adminpage/users/users.component';
 import { ManageHomePageComponent } from './adminpage/manage-home-page/manage-home-page.component';
 import { UserComponent } from './adminpage/users/user/user.component';
+import { TermsComponent } from './terms/terms.component';
+import { PrivacyComponent } from './privacy/privacy.component';
 
 //import { FileuploadService } from './fileupload.service';
 
@@ -69,6 +71,8 @@ export function getAuthServiceConfigs() {
     UsersComponent,
     ManageHomePageComponent,
     UserComponent,
+    TermsComponent,
+    PrivacyComponent,
   ],
   imports: [
     BrowserModule,

@@ -14,6 +14,8 @@ import { ErrorComponent } from './error/error.component';
 import { ResetpasswordComponent } from './login/resetpassword/resetpassword.component';
 import { UsersComponent } from './adminpage/users/users.component';
 import { ManageHomePageComponent } from './adminpage/manage-home-page/manage-home-page.component';
+import { PrivacyComponent } from './privacy/privacy.component';
+import { TermsComponent } from './terms/terms.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -24,7 +26,8 @@ const routes: Routes = [
    children: [
     { path: 'resetpassword', component: ResetpasswordComponent},
   ]},
-  { path: 'login/register', component: RegisterComponent},
+  { path: 'register', component: RegisterComponent},
+  { path: 'login/register', redirectTo:'register', pathMatch: 'full'},
   { path: 'contacts', component: ContactsComponent},
   { path: 'professionalservices', component: ProfessionalServicesComponent},
   { path: 'promote', component: PromoteComponent},
@@ -38,7 +41,13 @@ const routes: Routes = [
   { path: 'error/login', redirectTo: 'login', pathMatch: 'full'},
   { path: 'error/home', redirectTo: 'home', pathMatch: 'full'},
   { path: 'error/register', redirectTo: 'login/register', pathMatch: 'full'},
-  { path: 'error/resetpassword', redirectTo: 'login/resetpassword', pathMatch: 'full'}
+  { path: 'error/resetpassword', redirectTo: 'login/resetpassword', pathMatch: 'full'},
+  { path: 'privacy', component: PrivacyComponent},
+  { path: 'terms', component: TermsComponent},
+  { path: 'register/privacy', redirectTo: 'privacy', pathMatch: 'full'},
+  { path: 'register/terms', redirectTo: 'terms', pathMatch: 'full'},
+  { path: 'privacy/register', redirectTo: 'register', pathMatch: 'full'},
+  { path: 'terms/register', redirectTo: 'register', pathMatch: 'full'}
 ];
 
 @NgModule({
