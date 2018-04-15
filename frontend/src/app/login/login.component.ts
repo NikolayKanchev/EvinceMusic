@@ -2,7 +2,6 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {FormControl, Validators, FormGroup, FormBuilder} from '@angular/forms';
 import { Router, NavigationStart } from '@angular/router';
 import { Auth1Service } from '../auth1.service';
-import { DataService } from '../data.service';
 import {
   AuthService,
   FacebookLoginProvider,
@@ -20,7 +19,7 @@ export class LoginComponent implements OnInit {
   private loginForm: FormGroup;
   hideLogin: boolean;
 
-  constructor(private ds: DataService, private fb: FormBuilder, private authService: Auth1Service, private socialAuthService: AuthService, private router: Router) { }
+  constructor(private fb: FormBuilder, private authService: Auth1Service, private socialAuthService: AuthService, private router: Router) { }
 
   public socialSignIn(socialPlatform : string) {
     let socialPlatformProvider;

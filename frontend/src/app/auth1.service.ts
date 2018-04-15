@@ -3,7 +3,6 @@ import { Observable } from "rxjs/Observable";
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/delay';
-import { DataService } from './data.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { User } from './entities/user';
 import { Router } from '@angular/router';
@@ -48,7 +47,7 @@ export class Auth1Service{
         this.hideLoginSource.next(hideLogin);
       }
 
-   constructor(private ds: DataService, private router: Router, private http: HttpClient) { }
+   constructor(private router: Router, private http: HttpClient) { }
 
    login(): Observable<boolean>{
        
@@ -157,7 +156,7 @@ export class Auth1Service{
 
     public getUsers(): Observable<User[]> {
         return this.http.get<User[]>(this.dbServerURL + 'get-users');
-      }
+    }
 }
 
 interface ServerResponce{

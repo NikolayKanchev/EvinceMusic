@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../entities/user';
-import { DataService } from '../../data.service';
 import { MatTableDataSource } from '@angular/material';
 import { Auth1Service } from '../../auth1.service';
 
@@ -16,10 +15,9 @@ export class UsersComponent implements OnInit {
   displayedColumns = ['firstName', 'lastName', 'username', 'email'];
   dataSource = new MatTableDataSource();
   
-  constructor(private ds: DataService, private authService: Auth1Service) { }
+  constructor(private authService: Auth1Service) { }
 
   ngOnInit() {
-    this.users = this.ds.getUsers();
     this.authService.getUsers().subscribe(
       data => {
         this.dataSource.data = data;
