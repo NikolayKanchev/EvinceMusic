@@ -13,7 +13,7 @@ const URL = 'http://localhost:3000';
 })
 export class TalentComponent implements OnInit {
 
-    public uploader:FileUploader = new FileUploader({url: URL, itemAlias: 'photo'});
+    public uploader:FileUploader = new FileUploader({url: URL, itemAlias: 'audio'});
     title = 'app works!';
 
     ngOnInit() {
@@ -26,11 +26,11 @@ export class TalentComponent implements OnInit {
 
     }
     upload() {
-        let inputEl: HTMLInputElement = this.el.nativeElement.querySelector('#photo');
+        let inputEl: HTMLInputElement = this.el.nativeElement.querySelector('#audio');
         let fileCount: number = inputEl.files.length;
         let formData = new FormData();
         if (fileCount > 0) {
-                formData.append('photo', inputEl.files.item(0));
+                formData.append('audio', inputEl.files.item(0));
             this.http
                 .post(URL, formData).map((res:Response) => res.json()).subscribe(
 

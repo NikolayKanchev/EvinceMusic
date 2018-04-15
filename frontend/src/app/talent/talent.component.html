@@ -1,6 +1,6 @@
 
     <div id="text">
-    <input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
+    <input type="file" name="audio" ng2FileSelect [uploader]="uploader" />
     <button type="button" id="btn" class="btn btn-success btn-s" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
         Upload
     </button>
