@@ -2,7 +2,7 @@
     <mat-toolbar-row>
       <div mat-card-avatar id="logo"></div>
       <span class="example-spacer"></span>
-      <button mat-button routerLink="/adminpage" *ngIf="username=='admin'">Admin page</button>
+      <button mat-button routerLink="/adminpage" *ngIf="username=='ADMIN'">Admin page</button>
       <button mat-button routerLink="/home" mat-button >Home</button>
       <button mat-button routerLink="/professionalservices">Professional Services</button>
       <button mat-button routerLink="/promote">Promotions</button>
@@ -20,6 +20,10 @@
         <mat-icon>menu</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
+        <button mat-menu-item *ngIf="username=='ADMIN'" routerLink="/adminpage">
+          <mat-icon>admin</mat-icon>
+          <span>Admin page</span>
+        </button>
         <button mat-menu-item routerLink="/home">
           <mat-icon>home</mat-icon>
           <span>Home</span>
