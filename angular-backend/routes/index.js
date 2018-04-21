@@ -6,7 +6,7 @@ var multer = require('multer');
 var DIR = './uploads';
 
 // uploading a single file the name "photo"
-var upload = multer({dest: DIR}).single('photo')
+var upload = multer({dest: DIR}).single('audio')
 
 
 
