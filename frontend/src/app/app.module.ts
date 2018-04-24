@@ -34,6 +34,7 @@ import { UserComponent } from './adminpage/users/user/user.component';
 import { TermsComponent } from './terms/terms.component';
 import { PrivacyComponent } from './privacy/privacy.component';
 
+
 //import { FileuploadService } from './fileupload.service';
 
 // Configs 
