@@ -2,6 +2,9 @@
 botsettings.json
 mysql_credentials_local.js
 
+#the uploaded files
+uploads/
+
 # Logs
 logs
 *.log

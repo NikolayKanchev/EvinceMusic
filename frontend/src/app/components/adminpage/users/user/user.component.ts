@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { User } from '../../../entities/user';
+import { User } from '../../../../entities/user';
 
 @Component({
   selector: 'app-user',

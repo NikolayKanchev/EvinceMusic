@@ -1,28 +1,24 @@
-let express = require("express");
-let app = express();
-
+const express = require("express");
+const app = express();
 const bodyParser = require('body-parser');
+// const server = require("http").Server(app);
+// const io = require("socket.io")(server);
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+const Knex = require("knex");
+const knexConfig = require("./knexfile.js");
+const objection = require("objection");
+const Model = objection.Model;
+const knex = Knex(knexConfig.development);
+var cors = require('cors')
   
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
- 
 // parse application/json
 app.use(bodyParser.json());
-
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
-
-const objection = require("objection");
-const Model = objection.Model;
-const Knex = require("knex");
-const knexConfig = require("./knexfile.js");
-
-const knex = Knex(knexConfig.development);
-
 // give the knex connection to objection.js
 Model.knex(knex);
-
-var cors = require('cors')
+// CORS-enabled for all origins!
 app.use(cors())
 
 // convenience object that contains all the models and easy access to knex
@@ -149,9 +145,11 @@ app.get("/get-users", function(req, res) {
     });
 });
 
-var server = app.listen("3001", function(err) {
+let server = app.listen("3001", function(err) {
     if (err) {
         console.log("Error starting the server", err);
     }
     console.log("Starting the server on port", server.address().port);
 });
+
+module.exports = app;

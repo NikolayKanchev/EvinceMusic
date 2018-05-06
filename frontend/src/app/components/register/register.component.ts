@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Auth1Service } from '../auth1.service';
+import { Auth1Service } from '../../services/auth1.service';
 
 import { AbstractControl, ValidatorFn } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';

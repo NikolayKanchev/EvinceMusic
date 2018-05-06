@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {FormControl, Validators, FormGroup, FormBuilder} from '@angular/forms';
 import { Router, NavigationStart } from '@angular/router';
-import { Auth1Service } from '../auth1.service';
+import { Auth1Service } from '../../services/auth1.service';
 import {
   AuthService,
   FacebookLoginProvider,

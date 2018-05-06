@@ -4,35 +4,36 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { Material } from './material';
-import { AuthGuard, UserAccessGuard, AdminAccess } from './auth.guard';
-
-import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
-import { PromoteComponent } from './promote/promote.component';
-import { RegisterComponent } from './register/register.component';
-import { ProfessionalServicesComponent } from './professional-services/professional-services.component';
-import { TalentComponent } from './talent/talent.component';
-import { ContactsComponent } from './contacts/contacts.component';
+import { AuthGuard } from './guards/auth.guard';
+import { UserAccessGuard } from './guards/auth.userAccessGuard';
+import { AdminAccess } from './guards/auth.adminGuard';
+import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
+import { PromoteComponent } from './components/promote/promote.component';
+import { RegisterComponent } from './components/register/register.component';
+import { ProfessionalServicesComponent } from './components/professional-services/professional-services.component';
+import { TalentComponent } from './components/talent/talent.component';
+import { ContactsComponent } from './components/contacts/contacts.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import { AdminpageComponent } from './adminpage/adminpage.component';
-import { AccSettingsComponent } from './acc-settings/acc-settings.component';
+import { AdminpageComponent } from './components/adminpage/adminpage.component';
+import { AccSettingsComponent } from './components/acc-settings/acc-settings.component';
 import {
   SocialLoginModule,
   AuthServiceConfig,
   GoogleLoginProvider,
   FacebookLoginProvider,
 } from "angular5-social-login";
-import { Auth1Service } from './auth1.service';
-import { ErrorComponent } from './error/error.component';
-import { ResetpasswordComponent } from './login/resetpassword/resetpassword.component';
+import { Auth1Service } from './services/auth1.service';
+import { ErrorComponent } from './components/error/error.component';
+import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
 import { FileSelectDirective } from 'ng2-file-upload';
 import { HttpModule } from '@angular/http';
-import { UsersComponent } from './adminpage/users/users.component';
-import { ManageHomePageComponent } from './adminpage/manage-home-page/manage-home-page.component';
-import { UserComponent } from './adminpage/users/user/user.component';
-import { TermsComponent } from './terms/terms.component';
-import { PrivacyComponent } from './privacy/privacy.component';
+import { UsersComponent } from './components/adminpage/users/users.component';
+import { ManageHomePageComponent } from './components/adminpage/manage-home-page/manage-home-page.component';
+import { UserComponent } from './components/adminpage/users/user/user.component';
+import { TermsComponent } from './components/terms/terms.component';
+import { PrivacyComponent } from './components/privacy/privacy.component';
 
 
 //import { FileuploadService } from './fileupload.service';

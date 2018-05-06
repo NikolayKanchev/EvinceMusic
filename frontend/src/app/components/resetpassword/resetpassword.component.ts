@@ -14,7 +14,7 @@ export class ResetpasswordComponent implements OnInit {
   // constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
   constructor(private fb: FormBuilder, private router: Router) { }
 
-  onSubmitLogin(loginForm){
+  onSubmitReset(resetForm){
     // if(loginForm.valid){
     //   console.log("Form valid: ", loginForm.valid);
     //   this.authService.login().subscribe(() => {

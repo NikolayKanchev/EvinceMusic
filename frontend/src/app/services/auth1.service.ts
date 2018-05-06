@@ -4,7 +4,7 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/delay';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { User } from './entities/user';
+import { User } from './../entities/user';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { get } from 'selenium-webdriver/http';

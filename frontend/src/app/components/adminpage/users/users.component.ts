@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../entities/user';
+import { User } from '../../../entities/user';
 import { MatTableDataSource } from '@angular/material';
-import { Auth1Service } from '../../auth1.service';
+import { Auth1Service } from '../../../services/auth1.service';
 
 @Component({
   selector: 'app-users',

@@ -1,31 +1,33 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { PromoteComponent } from './promote/promote.component';
-import { ContactsComponent } from './contacts/contacts.component';
-import { ProfessionalServicesComponent } from './professional-services/professional-services.component';
-import { TalentComponent } from './talent/talent.component';
-import { RegisterComponent } from './register/register.component';
-import { AuthGuard, UserAccessGuard, AdminAccess} from './auth.guard';
-import { AdminpageComponent } from './adminpage/adminpage.component';
-import { AccSettingsComponent } from './acc-settings/acc-settings.component';
-import { ErrorComponent } from './error/error.component';
-import { ResetpasswordComponent } from './login/resetpassword/resetpassword.component';
-import { UsersComponent } from './adminpage/users/users.component';
-import { ManageHomePageComponent } from './adminpage/manage-home-page/manage-home-page.component';
-import { PrivacyComponent } from './privacy/privacy.component';
-import { TermsComponent } from './terms/terms.component';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { PromoteComponent } from './components/promote/promote.component';
+import { ContactsComponent } from './components/contacts/contacts.component';
+import { ProfessionalServicesComponent } from './components/professional-services/professional-services.component';
+import { TalentComponent } from './components/talent/talent.component';
+import { RegisterComponent } from './components/register/register.component';
+import { AuthGuard} from './guards/auth.guard';
+import { UserAccessGuard } from './guards/auth.userAccessGuard';
+import { AdminAccess } from './guards/auth.adminGuard';
+import { AdminpageComponent } from './components/adminpage/adminpage.component';
+import { AccSettingsComponent } from './components/acc-settings/acc-settings.component';
+import { ErrorComponent } from './components/error/error.component';
+import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
+import { UsersComponent } from './components/adminpage/users/users.component';
+import { ManageHomePageComponent } from './components/adminpage/manage-home-page/manage-home-page.component';
+import { PrivacyComponent } from './components/privacy/privacy.component';
+import { TermsComponent } from './components/terms/terms.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent},
   { path: 'login', component: LoginComponent,
   data: { onlyGuests: true },
-      canActivate: [ UserAccessGuard ],
-   children: [
-    { path: 'resetpassword', component: ResetpasswordComponent},
-  ]},
+      canActivate: [ UserAccessGuard ]
+  },
+  { path: 'resetpassword', component: ResetpasswordComponent},
+  { path: 'login/resetpassword', redirectTo:'resetpassword', pathMatch: 'full'},
   { path: 'register', component: RegisterComponent},
   { path: 'login/register', redirectTo:'register', pathMatch: 'full'},
   { path: 'contacts', component: ContactsComponent},
@@ -40,8 +42,8 @@ const routes: Routes = [
   { path: 'acc-settings', component: AccSettingsComponent},
   { path: 'error/login', redirectTo: 'login', pathMatch: 'full'},
   { path: 'error/home', redirectTo: 'home', pathMatch: 'full'},
-  { path: 'error/register', redirectTo: 'login/register', pathMatch: 'full'},
-  { path: 'error/resetpassword', redirectTo: 'login/resetpassword', pathMatch: 'full'},
+  { path: 'error/register', redirectTo: 'register', pathMatch: 'full'},
+  { path: 'error/resetpassword', redirectTo: 'resetpassword', pathMatch: 'full'},
   { path: 'privacy', component: PrivacyComponent},
   { path: 'terms', component: TermsComponent},
   { path: 'register/privacy', redirectTo: 'privacy', pathMatch: 'full'},
