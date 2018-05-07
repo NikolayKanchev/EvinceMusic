@@ -7,9 +7,9 @@ import * as socketIo from 'socket.io-client';
 @Injectable()
 export class SendEmailService {
   dbServerURL:string = "http://localhost:3001/";
-  email: {string};
-
-
+  redirectUrl: string = ""; //- will store the attempted url
+  email: string;
+  response: any;
 
   constructor(private http: HttpClient) { }
 
@@ -22,16 +22,19 @@ export class SendEmailService {
             {"email":this.email})
             .subscribe(
                 res => {
-                    if (res.status === 200){            
-                        console.log(res);                      
+                    if (res.status === 200){  
+                        this.response = res;          
+                        // console.log(res);                      
                         return true;
-                    }else{                       
-                      console.log(res);
+                    }else{     
+                        this.response = res;                            
+                    //   console.log(res);
                         return false;
                     }           
                 },
                 err => {
-                    console.log("Request error !");
+                    // console.log("Request error !");
+                    this.response = err;          
                     return false;                    
                 }
             );

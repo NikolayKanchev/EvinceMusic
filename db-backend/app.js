@@ -155,7 +155,7 @@ app.post("/reset-pass", function(req, res) {
     }).then(foundUsers => {
         if (foundUsers.length === 0) {
             response.status = 403; // forbidden
-            response.message = "There is no such user e-mail !";
+            response.message = "There is no user with e-mail: " + email;
             res.send(response);
         } else {
             
@@ -167,10 +167,12 @@ app.post("/reset-pass", function(req, res) {
                 .then(
                 transporter.sendMail(mailOptions, function (err, info) {
                     if(err){
-                        console.log(err);
+                        response.status = 400;
+                        response.message = "There was a problem sending the e-mail. \n Please check your e-mail and try again !";
+                        res.send(response);
                     }else{
                         response.status = 200;
-                        response.message = "An e-mail with the new password was sended successfully !";
+                        response.message = "An e-mail with the new password was sent successfully !";
                         res.send(response);
                     }                      
                  }),
@@ -180,7 +182,7 @@ app.post("/reset-pass", function(req, res) {
         }
     }).catch(err => {
         response.status = 500;
-        response.message = "error connecting or quering the database";
+        response.message = "Error connecting or quering the database";
         res.send(response);
     });
 });

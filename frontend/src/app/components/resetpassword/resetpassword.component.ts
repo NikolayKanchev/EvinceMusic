@@ -11,16 +11,22 @@ import { SendEmailService } from '../../services/send-email.service';
 export class ResetpasswordComponent implements OnInit {
   private resetPassForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router, private emailService: SendEmailService) { }
+  constructor(private fb: FormBuilder, private router: Router, private emailService: SendEmailService) {}
 
   onSubmit(resetPassForm){
     if(resetPassForm.valid){
       this.emailService.email = resetPassForm.value.email;     
       this.emailService.sendNewPass().subscribe(
         data => {
-        console.log("The data is here ooooooooooooooo", data);
-        // this.router.navigateByUrl(this.authService.redirectUrl);
-        });
+        console.log(data);
+        })
+        setTimeout(() => {
+          alert(this.emailService.response.message);
+          if(this.emailService.response.status === 200){
+            this.router.navigateByUrl("/login");
+          }     
+          resetPassForm.reset();
+        }, 2000);
     }else{
       console.log("Form valid: ", resetPassForm.valid);
     }
@@ -33,6 +39,6 @@ export class ResetpasswordComponent implements OnInit {
   createForm(): any {
     this.resetPassForm = this.fb.group({
       email: ["", [Validators.required, Validators.email]]
-    })
+    });
   }
 }

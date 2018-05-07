@@ -106,7 +106,6 @@ export class Auth1Service{
         this.userOnRegister.email = this.email;
         this.userOnRegister.password = this.password;
 
-        // this.userExist = this.ds.doesUserExist(this.email);
         const req = this.http.post<ServerResponce>(this.dbServerURL + 'signup',
             this.userOnRegister)
             .subscribe(
