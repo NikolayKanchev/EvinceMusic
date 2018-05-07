@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SendEmailService } from '../../services/send-email.service';
 
 @Component({
   selector: 'app-resetpassword',
@@ -8,22 +9,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./resetpassword.component.scss']
 })
 export class ResetpasswordComponent implements OnInit {
-  private resetForm: FormGroup;
-  // emailPlaceholder: string = "E-mail";
+  private resetPassForm: FormGroup;
 
-  // constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
-  constructor(private fb: FormBuilder, private router: Router) { }
+  constructor(private fb: FormBuilder, private router: Router, private emailService: SendEmailService) { }
 
-  onSubmitReset(resetForm){
-    // if(loginForm.valid){
-    //   console.log("Form valid: ", loginForm.valid);
-    //   this.authService.login().subscribe(() => {
-    //     console.log("Now I am logged in!");
-    //     this.router.navigateByUrl(this.authService.redirectUrl);
-    //   })
-    // }else{
-    //   console.log("Form valid: ", loginForm.valid);
-    // }
+  onSubmit(resetPassForm){
+    if(resetPassForm.valid){
+      this.emailService.email = resetPassForm.value.email;     
+      this.emailService.sendNewPass().subscribe(
+        data => {
+        console.log("The data is here ooooooooooooooo", data);
+        // this.router.navigateByUrl(this.authService.redirectUrl);
+        });
+    }else{
+      console.log("Form valid: ", resetPassForm.valid);
+    }
   }
 
   ngOnInit() {
@@ -31,7 +31,7 @@ export class ResetpasswordComponent implements OnInit {
   }
 
   createForm(): any {
-    this.resetForm = this.fb.group({
+    this.resetPassForm = this.fb.group({
       email: ["", [Validators.required, Validators.email]]
     })
   }

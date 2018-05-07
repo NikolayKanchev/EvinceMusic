@@ -5,6 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "secure": "ng serve --ssl",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
@@ -33,6 +34,7 @@
     "ng5-fileupload": "^1.2.8",
     "node-sass": "^4.7.2",
     "rxjs": "^5.5.6",
+    "socket.io-client": "^2.1.0",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {

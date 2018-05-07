@@ -10,7 +10,9 @@ const knexConfig = require("./knexfile.js");
 const objection = require("objection");
 const Model = objection.Model;
 const knex = Knex(knexConfig.development);
-var cors = require('cors')
+const cors = require('cors');
+const nodemailer = require('nodemailer');
+const sendMail = require("./email_config/emailAndPass");
   
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -123,18 +125,71 @@ app.post("/login", function(req, res) {
     });
 });
 
+app.post("/reset-pass", function(req, res) {
+    let response = {};
+    let email = req.body.email;
+    let newPass = randomPasswordGenerator(8);
+
+    
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            //the e-mail and the password comes from email_config/emailAndPass.js
+            user: sendMail.getEmail(),
+            pass: sendMail.getPass()
+        },
+        tls:{
+            rejectUnauthorized:false
+        }
+    });
+    
+    const mailOptions = {
+        from: sendMail.getEmail(), // sender e-mail
+        to: email, // receiver e-mail
+        subject: 'Reset Password', // Subject line
+        html: "<p>Your new Password is: " + newPass + "</p>"// message
+    };
+
+    db.User.query().select().where({
+        "email": email
+    }).then(foundUsers => {
+        if (foundUsers.length === 0) {
+            response.status = 403; // forbidden
+            response.message = "There is no such user e-mail !";
+            res.send(response);
+        } else {
+            
+            bcrypt.hash(newPass, saltRounds).then(function(hashedPass) {
+
+                db.User.query().where('id', foundUsers[0].id).update({
+                    "password": hashedPass
+                })
+                .then(
+                transporter.sendMail(mailOptions, function (err, info) {
+                    if(err){
+                        console.log(err);
+                    }else{
+                        response.status = 200;
+                        response.message = "An e-mail with the new password was sended successfully !";
+                        res.send(response);
+                    }                      
+                 }),
+
+                )
+            });            
+        }
+    }).catch(err => {
+        response.status = 500;
+        response.message = "error connecting or quering the database";
+        res.send(response);
+    });
+});
+
 app.get("/get-users", function(req, res) {
     let response = {};
 
     db.User.query().select()
     .then(foundUsers => {
-        // response.status = 200;
-        // response.message = "All Users";
-
-        // foundUsers.forEach(element => {
-        //     delete element.id;
-        // });
-
         response.users = foundUsers;
         res.send(foundUsers);
     }).catch(err => {
@@ -144,6 +199,16 @@ app.get("/get-users", function(req, res) {
         res.send(response);
     });
 });
+
+function randomPasswordGenerator(len, charSet) {
+    charSet = charSet || 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let randomString = '';
+    for (let i = 0; i < len; i++) {
+        let randomPoz = Math.floor(Math.random() * charSet.length);
+        randomString += charSet.substring(randomPoz,randomPoz+1);
+    }
+    return randomString;
+}
 
 let server = app.listen("3001", function(err) {
     if (err) {
