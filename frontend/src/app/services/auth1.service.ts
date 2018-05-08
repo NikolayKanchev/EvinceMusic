@@ -37,14 +37,17 @@ export class Auth1Service{
     }
 
 
-    private usernameSource = new BehaviorSubject<String>("");
+    private usernameSource = new BehaviorSubject<string>("");
     private hideLoginSource = new BehaviorSubject<boolean>(false);
+    private loggedUserId = new BehaviorSubject<string>("");
     currentUsername = this.usernameSource.asObservable();
     currentHideLogin = this.hideLoginSource.asObservable();
+    currentLoggedUserId = this.loggedUserId.asObservable();
 
-    changeUsername(username: String, hideLogin: boolean){
+    changeUsername(username: string, hideLogin: boolean, id: string){
         this.usernameSource.next(username);
         this.hideLoginSource.next(hideLogin);
+        this.loggedUserId.next(id);
       }
 
    constructor(private router: Router, private http: HttpClient) { }
@@ -69,7 +72,7 @@ export class Auth1Service{
                         }else{
                             this.isLoggedIn = true;
             
-                            this.changeUsername(res.message, true);
+                            this.changeUsername(res.message, true, res.userId);
                             this.loggedUserUsername = res.message;
                             
                             if(this.redirectUrl === "error"){
@@ -92,7 +95,7 @@ export class Auth1Service{
 
    logout(): void{
        this.isLoggedIn = false;
-       this.changeUsername("", false);       
+       this.changeUsername("", false, "");       
    }
 
    register(): Observable<boolean>{
@@ -160,7 +163,8 @@ export class Auth1Service{
 
 interface ServerResponce{
     status: number,
-    message: string
+    message: string,
+    userId: string
 }
 
 interface GetUsers{

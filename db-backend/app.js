@@ -110,6 +110,7 @@ app.post("/login", function(req, res) {
                 if (passValid) {
                     response.status = 200;
                     response.message = foundUsers[0].username;
+                    response.userId = foundUsers[0].id;
                     res.send(response);
                 } else {
                     response.status = 403; // forbidden
@@ -172,7 +173,7 @@ app.post("/reset-pass", function(req, res) {
                         res.send(response);
                     }else{
                         response.status = 200;
-                        response.message = "An e-mail with the new password was sent successfully !";
+                        response.message = "Soon you will receive an e-mail !";
                         res.send(response);
                     }                      
                  }),
@@ -200,6 +201,78 @@ app.get("/get-users", function(req, res) {
         response.users = foundUsers;
         res.send(response);
     });
+});
+
+app.post("/get-user", function(req, res) {
+    loggedUserId = req.body.id;
+    let response = {};
+
+    db.User.query().select().where({
+        "id": loggedUserId
+    }).then(foundUsers => {
+        if(foundUsers.length === 0){
+            response.status = 403;
+            response.user = foundUsers[0];
+            res.send(foundUsers);
+        }else{
+            response.status = 200;
+            response.user = foundUsers[0];
+            res.send(foundUsers);
+        }
+        
+    }).catch(err => {
+        response.status = 500;
+        response.user = foundUsers[0];
+        res.send(response);
+    });
+});
+
+app.post("/update-user", function(req, res) {
+    userId = req.body.userId;
+    firstName = req.body.firstName;
+    lastName = req.body.lastName;
+    username = req.body.username;
+    email = req.body.email;
+    password = req.body.password;
+    let response = {};
+    
+    if(password === ""){
+        db.User.query().where('id', userId).update({
+            "firstName": firstName,
+            "lastName": lastName,
+            "username": username,
+            "email": email,
+        })
+        .then(
+            response.status = 200,
+            response.message = "User details was updated !!!",
+            res.send(response)
+        ).catch(err => {
+            response.status = 500;
+            response.message = "Error connecting or quering the database";
+            res.send(response);
+        });
+    }else{
+        bcrypt.hash(password, saltRounds).then(function(hashedPass) {
+
+            db.User.query().where('id', userId).update({
+                "firstName": firstName,
+                "lastName": lastName,
+                "username": username,
+                "email": email,
+                "password": hashedPass
+            })
+            .then(
+                response.status = 200,
+                response.message = "User details saved !!!",
+                res.send(response)
+            ).catch(err => {
+                response.status = 500;
+                response.message = "Error connecting or quering the database";
+                res.send(response);
+            });
+        })
+    }
 });
 
 function randomPasswordGenerator(len, charSet) {

@@ -1,3 +1,14 @@
-<p>
-  acc-settings works!
-</p>
+
+<form [formGroup]="accSettingsForm" novalidate
+(submit)="onSubmitSave(accSettingsForm)">
+    <h1>Account Settings</h1>
+    <p class="error">{{serverMessage}}</p>
+    <br>
+    <input formControlName="firstName" placeholder="FirstName" type="text" value="" [(ngModel)]="firstName">
+    <input formControlName="lastName" placeholder="LastName" type="text" value="" [(ngModel)]="lastName">
+    <input formControlName="username" placeholder="Username" type="text" value="" [(ngModel)]="username">
+    <input formControlName="email" id="email" placeholder="Email" type="email" value="" [(ngModel)]="email">
+    <input formControlName="password" placeholder="password" type="password" value="" [(ngModel)]="password">
+    
+    <button type="submit">Submit</button>
+</form>

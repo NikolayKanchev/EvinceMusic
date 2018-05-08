@@ -35,6 +35,7 @@ import { UserComponent } from './components/adminpage/users/user/user.component'
 import { TermsComponent } from './components/terms/terms.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { SendEmailService } from './services/send-email.service';
+import { AccSettingsService } from './services/acc-settings.service';
 
 
 //import { FileuploadService } from './fileupload.service';
@@ -88,7 +89,7 @@ export function getAuthServiceConfigs() {
     SocialLoginModule,
     HttpModule
   ],
-  providers: [Auth1Service,SendEmailService, AuthGuard, UserAccessGuard, AdminAccess,
+  providers: [Auth1Service, SendEmailService, AccSettingsService, AuthGuard, UserAccessGuard, AdminAccess,
     {provide: AuthServiceConfig, useFactory: getAuthServiceConfigs}
   ],
   bootstrap: [AppComponent]

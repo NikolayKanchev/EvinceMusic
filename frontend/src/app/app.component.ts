@@ -12,12 +12,14 @@ export class AppComponent implements OnInit{
 
   username: String;
   hideLogin: boolean;
+  loggedUserId: string;
 
   constructor(private authService: Auth1Service){}
 
   ngOnInit(){
     this.authService.currentUsername.subscribe(username => this.username = username);
     this.authService.currentHideLogin.subscribe(hideLogin => this.hideLogin = hideLogin);
+    this.authService.currentLoggedUserId.subscribe(loggedUserId => this.loggedUserId = loggedUserId);
   }
 
   onSubmitLoguot(){
