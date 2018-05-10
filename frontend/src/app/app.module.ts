@@ -31,11 +31,11 @@ import { FileSelectDirective } from 'ng2-file-upload';
 import { HttpModule } from '@angular/http';
 import { UsersComponent } from './components/adminpage/users/users.component';
 import { ManageHomePageComponent } from './components/adminpage/manage-home-page/manage-home-page.component';
-import { UserComponent } from './components/adminpage/users/user/user.component';
 import { TermsComponent } from './components/terms/terms.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { SendEmailService } from './services/send-email.service';
 import { AccSettingsService } from './services/acc-settings.service';
+import { UserService } from './services/user.service';
 
 
 //import { FileuploadService } from './fileupload.service';
@@ -74,7 +74,6 @@ export function getAuthServiceConfigs() {
     FileSelectDirective,
     UsersComponent,
     ManageHomePageComponent,
-    UserComponent,
     TermsComponent,
     PrivacyComponent,
   ],
@@ -89,7 +88,7 @@ export function getAuthServiceConfigs() {
     SocialLoginModule,
     HttpModule
   ],
-  providers: [Auth1Service, SendEmailService, AccSettingsService, AuthGuard, UserAccessGuard, AdminAccess,
+  providers: [Auth1Service, SendEmailService, UserService, AccSettingsService, AuthGuard, UserAccessGuard, AdminAccess,
     {provide: AuthServiceConfig, useFactory: getAuthServiceConfigs}
   ],
   bootstrap: [AppComponent]

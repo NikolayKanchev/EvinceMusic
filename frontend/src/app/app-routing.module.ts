@@ -34,12 +34,12 @@ const routes: Routes = [
   { path: 'professionalservices', component: ProfessionalServicesComponent},
   { path: 'promote', component: PromoteComponent},
   { path: 'talent', component: TalentComponent},
-  { path: 'adminpage', component: AdminpageComponent, canActivate: [AdminAccess]},{ path: 'adminpage', component: AdminpageComponent, canActivate: [AdminAccess], children:[
+  { path: 'adminpage', component: AdminpageComponent, canActivate: [AdminAccess], children:[
     { path: 'users', component: UsersComponent},
     { path: 'manage-home-page', component: ManageHomePageComponent}
   ]},
   { path: 'error', component: ErrorComponent},
-  { path: 'acc-settings', component: AccSettingsComponent},
+  { path: 'acc-settings', component: AccSettingsComponent, canActivate: [AuthGuard]},
   { path: 'error/login', redirectTo: 'login', pathMatch: 'full'},
   { path: 'error/home', redirectTo: 'home', pathMatch: 'full'},
   { path: 'error/register', redirectTo: 'register', pathMatch: 'full'},

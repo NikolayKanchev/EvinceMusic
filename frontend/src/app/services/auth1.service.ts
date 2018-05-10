@@ -11,6 +11,7 @@ import { get } from 'selenium-webdriver/http';
 
 @Injectable()
 export class Auth1Service{
+    //    ****** for the login part ******
     errorMessage: string;
     redirectUrl: string = ""; //- will store the attempted url
     isLoggedIn = false;
@@ -27,15 +28,14 @@ export class Auth1Service{
    username: string;
    email: string;
    password: string;
-//    ******************************
 
+   //********** shared data between all components **********
     private errorMessageSource = new BehaviorSubject<String>("");
     currentErrorMessage = this.errorMessageSource.asObservable();
 
     changeErrorMessage(errorMessage: string){
         this.errorMessageSource.next(errorMessage);
     }
-
 
     private usernameSource = new BehaviorSubject<string>("");
     private hideLoginSource = new BehaviorSubject<boolean>(false);
@@ -155,20 +155,10 @@ export class Auth1Service{
             return false;
         }
     }
-
-    public getUsers(): Observable<User[]> {
-        return this.http.get<User[]>(this.dbServerURL + 'get-users');
-    }
 }
 
 interface ServerResponce{
     status: number,
     message: string,
     userId: string
-}
-
-interface GetUsers{
-    status: number,
-    message: string,
-    users: User[]
 }
