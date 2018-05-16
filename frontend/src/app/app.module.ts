@@ -36,6 +36,18 @@ import { PrivacyComponent } from './components/privacy/privacy.component';
 import { SendEmailService } from './services/send-email.service';
 import { AccSettingsService } from './services/acc-settings.service';
 import { UserService } from './services/user.service';
+import { ProjectService } from './services/project.service';
+
+import { rootReducer } from './store/store'; // Added this to get the root reducer
+
+import { NgRedux, DevToolsExtension, NgReduxModule } from '@angular-redux/store';
+import { IAppState } from './store/store';
+import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
+import { ProjectActions } from './project.actions';
+
+import { createEpicMiddleware, combineEpics } from "redux-observable";
+import { createLogger } from "redux-logger";
+import { ProjectEpic } from './project.epic';
 
 
 //import { FileuploadService } from './fileupload.service';
@@ -86,11 +98,35 @@ export function getAuthServiceConfigs() {
     FormsModule,
     HttpClientModule,
     SocialLoginModule,
-    HttpModule
+    HttpModule,
+    NgReduxModule,   NgReduxRouterModule.forRoot()
   ],
-  providers: [Auth1Service, SendEmailService, UserService, AccSettingsService, AuthGuard, UserAccessGuard, AdminAccess,
+  providers: [Auth1Service, SendEmailService, UserService, AccSettingsService, AuthGuard, UserAccessGuard, AdminAccess, ProjectActions, 
+    ProjectService, ProjectEpic,
     {provide: AuthServiceConfig, useFactory: getAuthServiceConfigs}
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(private ngRedux: NgRedux<IAppState>,
+    private devTool: DevToolsExtension,
+    private ngReduxRouter: NgReduxRouter, private projectEpic: ProjectEpic) { 
+      
+      const rootEpic = combineEpics(
+        // Each epic is referenced here.
+        this.projectEpic.getProjects,
+        this.projectEpic.addProject,
+        this.projectEpic.deleteProject,
+        this.projectEpic.updateProject
+      );
+
+      // Middleware
+      const middleware = [
+        createEpicMiddleware(rootEpic), createLogger({ level: 'info', collapsed: true })
+      ];
+      
+      this.ngRedux.configureStore(
+        rootReducer,
+        {}, middleware,[ devTool.isEnabled() ? devTool.enhancer() : f => f]);
+  }
+ }

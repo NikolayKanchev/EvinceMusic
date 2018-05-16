@@ -26,15 +26,17 @@ app.use(cors())
 // convenience object that contains all the models and easy access to knex
 const db = {
     "Knex": knex,
-    "User": require("./models/User.js")
+    "User": require("./models/User.js"),
+    "Project": require("./models/Project.js")
 }
 
+//region *** signup ***
 app.post("/signup", function(req, res) {
 //    select * from users where username = 'some_user_name';
     let response = {};
 
     const email = req.body.email;
-    // const password = req.body.password;
+    // const password = req.body.password;-
 
     db.User.query().select().where('email', email)
         .then(foundUsers => {
@@ -93,7 +95,9 @@ app.post("/signup", function(req, res) {
         });
 
 });
+//endregion
 
+//region *** login ***
 app.post("/login", function(req, res) {
     let response = {};
 
@@ -125,7 +129,9 @@ app.post("/login", function(req, res) {
         res.send(response);
     });
 });
+//endregion
 
+//region *** reset-pass ***
 app.post("/reset-pass", function(req, res) {
     let response = {};
     let email = req.body.email;
@@ -188,6 +194,18 @@ app.post("/reset-pass", function(req, res) {
     });
 });
 
+function randomPasswordGenerator(len, charSet) {
+    charSet = charSet || 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let randomString = '';
+    for (let i = 0; i < len; i++) {
+        let randomPoz = Math.floor(Math.random() * charSet.length);
+        randomString += charSet.substring(randomPoz,randomPoz+1);
+    }
+    return randomString;
+}
+//endregion
+
+//region *** get-users, get-user ***
 app.get("/get-users", function(req, res) {
     let response = {};
 
@@ -274,16 +292,113 @@ app.post("/update-user", function(req, res) {
         })
     }
 });
+// endregion
 
-function randomPasswordGenerator(len, charSet) {
-    charSet = charSet || 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let randomString = '';
-    for (let i = 0; i < len; i++) {
-        let randomPoz = Math.floor(Math.random() * charSet.length);
-        randomString += charSet.substring(randomPoz,randomPoz+1);
+// region *** CRUD Project ***
+
+        //region *** get-projects ***
+app.get("/get-projects", function(req, res) {
+    let response = {};
+
+    db.Project.query().select()
+    .then(foundProjects => {
+        response.projects = foundProjects;
+        res.send(foundProjects);
+    }).catch(err => {
+        response.status = 500;
+        response.message = "error connecting or quering the database";
+        response.projects = foundProjects;
+        res.send(response);
+    });
+});
+        //endregion
+
+        //region *** update-project ***
+app.post("/update-project", function(req, res) {
+    let response = {};    
+   
+    db.Project.query().select().where({
+        "id": req.body.id
+    }).then(foundProjects => {
+        if (foundProjects.length === 0) {
+            response.status = 403;
+            response.message = "There is no such project";
+            res.send(response);
+        } else {
+            db.Project.query().where('id', req.body.id).update({
+                "pick": req.body.pick,
+                "title": req.body.title,
+                "date": req.body.date,
+                "text": req.body.text, 
+            })
+            .then(
+                response.status = 200,
+                response.message = "The project was updated !",
+                res.send(response)
+            )
+        };            
+    }).catch(err => {
+        response.status = 500;
+        response.message = "Error connecting or quering the database";
+        res.send(response);
+    });
+});
+        // endregion
+
+        //region *** delete-project ***
+app.post("/delete-project", function(req, res) {
+    let response = {};       
+
+    db.Project.query().select().where('id', req.body.id)
+        .then(foundProjects => {
+            if (foundProjects.length === 0) {
+                response.message = "The project doesn't exist !";
+                response.status = 400;
+                res.send(response)
+            } else {    
+                db.Project.query().delete().where('id', req.body.id)
+                .then(persistedUser => {
+                    response.status = 200;
+                    response.message = "The Project was deleted";
+                    res.send(response);
+                }).catch(err => {
+                    response.status = 500;
+                    response.message = "Error deleting the project";
+                    res.send(response);                        
+                });
+            }
+        }).catch(err => {
+            response.status = 500;
+            response.message = "error connecting or quering the database";
+            res.send(response);
+        });
     }
-    return randomString;
-}
+)
+
+        //endregion
+
+        //region *** add-project ***
+app.post("/add-project", function(req, res) {
+    let response = {};
+    
+    db.Project.query().insert({
+        "pick": req.body.pick,
+        "title": req.body.title,
+        "date": req.body.date,
+        "text": req.body.text,                        
+    }).then(persistedUser => {
+        response.status = 200;
+        response.message = "A new Project was saved in DB";
+        res.send(response);
+    }).catch(err => {
+        response.status = 500;
+        response.message = "Error saving the project to the database";
+        res.send(response);                        
+    });
+})
+        //endregion
+
+// endregion
 
 let server = app.listen("3001", function(err) {
     if (err) {
