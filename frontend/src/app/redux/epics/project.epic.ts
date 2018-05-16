@@ -1,5 +1,5 @@
-import { ProjectService } from './../app/services/project.service';
-import { ProjectActions } from "./project.actions";
+import { ProjectService } from './../../../app/services/project.service';
+import { ProjectActions } from "./../actions/project.actions";
 import { ActionsObservable } from "redux-observable";
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/mergeMap';

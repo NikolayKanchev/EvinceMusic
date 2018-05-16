@@ -1,6 +1,6 @@
 var deepFreeze = require('deep-freeze');
-import { projectReducer } from './project.reducer';
-import * as types from './project.actions';
+import { projectReducer } from './../reducers/project.reducer';
+import * as types from './../actions/project.actions';
 
 describe('project reducer', () => {
  

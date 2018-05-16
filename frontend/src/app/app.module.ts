@@ -38,16 +38,16 @@ import { AccSettingsService } from './services/acc-settings.service';
 import { UserService } from './services/user.service';
 import { ProjectService } from './services/project.service';
 
-import { rootReducer } from './store/store'; // Added this to get the root reducer
+import { rootReducer } from './redux/store/store'; // Added this to get the root reducer
 
 import { NgRedux, DevToolsExtension, NgReduxModule } from '@angular-redux/store';
-import { IAppState } from './store/store';
+import { IAppState } from './redux/store/store';
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
-import { ProjectActions } from './project.actions';
+import { ProjectActions } from './redux/actions/project.actions';
 
 import { createEpicMiddleware, combineEpics } from "redux-observable";
 import { createLogger } from "redux-logger";
-import { ProjectEpic } from './project.epic';
+import { ProjectEpic } from './redux/epics/project.epic';
 
 
 //import { FileuploadService } from './fileupload.service';

@@ -1,7 +1,7 @@
 import { routerReducer } from '@angular-redux/router';
 import { combineReducers } from 'redux';
-import { projectReducer } from './../project.reducer';
-import { Project } from '../entities/project';
+import { projectReducer } from './../reducers/project.reducer';
+import { Project } from '../../entities/project';
 
 export class ProjectsState {
  projects: Project[];

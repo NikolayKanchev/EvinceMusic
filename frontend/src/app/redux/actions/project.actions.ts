@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
-import { IAppState } from './store/store';
-import { Project } from './entities/project';
+import { IAppState } from './../store/store';
+import { Project } from './../../entities/project';
 
 @Injectable()
 export class ProjectActions {

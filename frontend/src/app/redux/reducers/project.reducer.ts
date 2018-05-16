@@ -1,5 +1,5 @@
-import { ProjectActions } from './project.actions';
-import { ProjectsState } from './store/store';
+import { ProjectActions } from './../actions/project.actions';
+import { ProjectsState } from './../store/store';
 import { tassign } from 'tassign';
 
 const INITIAL_STATE: ProjectsState = {projects: []}

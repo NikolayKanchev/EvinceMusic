@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Project } from '../../../entities/project';
 import { ProjectService } from '../../../services/project.service';
 import { NgRedux } from '@angular-redux/store';
-import { IAppState } from '../../../store/store';
-import { ProjectActions } from '../../../project.actions';
+import { IAppState } from '../../../redux/store/store';
+import { ProjectActions } from '../../../redux/actions/project.actions';
 
 @Component({
   selector: 'app-manage-home-page',
