@@ -302,7 +302,6 @@ app.get("/get-projects", function(req, res) {
 
     db.Project.query().select()
     .then(foundProjects => {
-        response.projects = foundProjects;
         res.send(foundProjects);
     }).catch(err => {
         response.status = 500;
@@ -323,6 +322,7 @@ app.post("/update-project", function(req, res) {
         if (foundProjects.length === 0) {
             response.status = 403;
             response.message = "There is no such project";
+            response.projects = foundProjects;
             res.send(response);
         } else {
             db.Project.query().where('id', req.body.id).update({
@@ -331,15 +331,26 @@ app.post("/update-project", function(req, res) {
                 "date": req.body.date,
                 "text": req.body.text, 
             })
-            .then(
-                response.status = 200,
-                response.message = "The project was updated !",
-                res.send(response)
+            .then(() => {
+                db.Project.query().select()
+                    .then(foundProjects => {                        
+                        response.status = 200;
+                        response.message = "The project was updated !";
+                        response.projects = foundProjects;
+                        res.send(response);
+                    }).catch(err => {
+                        response.status = 500;
+                        response.message = "error connecting or quering the database";
+                        response.projects = foundProjects;
+                        res.send(response);
+                    })
+                }
             )
         };            
     }).catch(err => {
         response.status = 500;
         response.message = "Error connecting or quering the database";
+        response.projects = foundProjects;
         res.send(response);
     });
 });
@@ -354,22 +365,34 @@ app.post("/delete-project", function(req, res) {
             if (foundProjects.length === 0) {
                 response.message = "The project doesn't exist !";
                 response.status = 400;
+                response.projects = foundProjects;
                 res.send(response)
-            } else {    
+            } else {
                 db.Project.query().delete().where('id', req.body.id)
-                .then(persistedUser => {
-                    response.status = 200;
-                    response.message = "The Project was deleted";
-                    res.send(response);
+                .then(() => {
+                    db.Project.query().select()
+                    .then(foundProjects => {
+                        response.status = 200;
+                        response.message = "The Project was deleted";
+                        response.projects = foundProjects;
+                        res.send(response);
+                    }).catch(err => {
+                        response.status = 500;
+                        response.message = "error connecting or quering the database";
+                        response.projects = foundProjects;
+                        res.send(response);
+                    });
                 }).catch(err => {
                     response.status = 500;
                     response.message = "Error deleting the project";
+                    response.projects = foundProjects;
                     res.send(response);                        
                 });
             }
         }).catch(err => {
             response.status = 500;
             response.message = "error connecting or quering the database";
+            response.projects = foundProjects;
             res.send(response);
         });
     }
@@ -386,10 +409,22 @@ app.post("/add-project", function(req, res) {
         "title": req.body.title,
         "date": req.body.date,
         "text": req.body.text,                        
-    }).then(persistedUser => {
-        response.status = 200;
-        response.message = "A new Project was saved in DB";
-        res.send(response);
+    }).then(() => {
+        db.Project.query().select()
+        .then(foundProjects => {
+            response.status = 200;
+            response.message = "The project was saved !";
+            response.projects = foundProjects;
+            res.send(response);
+        }).catch(err => {
+            response.status = 500;
+            response.message = "error connecting or quering the database";
+            response.projects = foundProjects;
+            res.send(response);
+        });
+        // response.status = 200;
+        // response.message = "A new Project was saved in DB";
+        // res.send(response);
     }).catch(err => {
         response.status = 500;
         response.message = "Error saving the project to the database";

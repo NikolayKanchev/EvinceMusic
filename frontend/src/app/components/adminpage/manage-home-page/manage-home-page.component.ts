@@ -14,7 +14,7 @@ export class ManageHomePageComponent implements OnInit {
 
   private projects: any;
 
-  private projectToDelete: string = '33';
+  private projectToDelete: string = '259';
 
   private project: Project = {
     id: null,
@@ -25,7 +25,7 @@ export class ManageHomePageComponent implements OnInit {
   };
 
   private projectToUpdate: Project = {
-    id: '35',
+    id: '270',
     pick: "no pick ************",
     title: "title ***********",
     date: "date *************",
