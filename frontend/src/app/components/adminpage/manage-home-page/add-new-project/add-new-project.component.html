@@ -1,0 +1,29 @@
+<form [formGroup]="addProjectForm" novalidate
+(submit)="onSubmit(addProjectForm)">
+    <!-- <h2>Create a new project</h2> -->
+    <p class="error">{{message}}</p>
+    <div id="containers">
+        <div id="input-container">
+            <input type="file" name="file" id="file" class="custom-file-input" (change)="onSelectFile($event)" />
+            
+            <input formControlName="title" id="title" placeholder="Title" type="text" autocomplete="off" value="" required>
+            <span class="error" *ngIf="!addProjectForm.controls.title.valid && addProjectForm.controls.title.touched">
+                    Please fill out the the title !
+            </span>
+            <span class="error" id="emptyLine" *ngIf="(addProjectForm.controls.title.valid && addProjectForm.controls.title.touched) || !addProjectForm.controls.title.touched">ooooooooooooooooooooooo</span>
+        </div>
+        <div id="image-container">
+            <img [src]="url">
+        </div>
+    </div>
+    <div id="text-container">
+        <textarea formControlName="text" name="text" id="text" cols="30" rows="10"></textarea>
+        <span class="error" *ngIf="!addProjectForm.controls.text.valid && addProjectForm.controls.text.touched">
+                The text field can't be empty !
+        </span>
+        <span class="error" id="emptyLine" *ngIf="(addProjectForm.controls.text.valid && addProjectForm.controls.text.touched) || !addProjectForm.controls.text.touched">ooooooooooooooooooooooo</span>
+    </div>
+    <button id="submit" mat-button type="submit">Save</button>
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css"> -->

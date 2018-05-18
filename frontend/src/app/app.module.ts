@@ -48,9 +48,9 @@ import { ProjectActions } from './redux/actions/project.actions';
 import { createEpicMiddleware, combineEpics } from "redux-observable";
 import { createLogger } from "redux-logger";
 import { ProjectEpic } from './redux/epics/project.epic';
-
-
-//import { FileuploadService } from './fileupload.service';
+import { AllProjectsComponent } from './components/adminpage/manage-home-page/all-projects/all-projects.component';
+import { AddNewProjectComponent } from './components/adminpage/manage-home-page/add-new-project/add-new-project.component';
+import { FileuploadService } from './services/fileupload.service';
 
 // Configs 
 export function getAuthServiceConfigs() {
@@ -88,6 +88,8 @@ export function getAuthServiceConfigs() {
     ManageHomePageComponent,
     TermsComponent,
     PrivacyComponent,
+    AllProjectsComponent,
+    AddNewProjectComponent,
   ],
   imports: [
     BrowserModule,
@@ -101,7 +103,7 @@ export function getAuthServiceConfigs() {
     HttpModule,
     NgReduxModule,   NgReduxRouterModule.forRoot()
   ],
-  providers: [Auth1Service, SendEmailService, UserService, AccSettingsService, AuthGuard, UserAccessGuard, AdminAccess, ProjectActions, 
+  providers: [Auth1Service, SendEmailService, UserService, AccSettingsService, FileuploadService, AuthGuard, UserAccessGuard, AdminAccess, ProjectActions, 
     ProjectService, ProjectEpic,
     {provide: AuthServiceConfig, useFactory: getAuthServiceConfigs}
   ],

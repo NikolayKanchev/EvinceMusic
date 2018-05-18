@@ -13,6 +13,7 @@ const knex = Knex(knexConfig.development);
 const cors = require('cors');
 const nodemailer = require('nodemailer');
 const sendMail = require("./email_config/emailAndPass");
+const formidable = require('formidable');
   
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -434,6 +435,22 @@ app.post("/add-project", function(req, res) {
         //endregion
 
 // endregion
+
+app.post('/upload-file', function (req, res){
+    let form = new formidable.IncomingForm();
+
+    form.parse(req);
+
+    form.on('fileBegin', function (name, file){
+        file.path = __dirname + '/uploads/' + file.name;
+    });
+
+    form.on('file', function (name, file){
+        console.log('Uploaded ' + file.name);
+    });
+
+    res.send({"status": 200, "message": "File uploaded successfuly"});
+});
 
 let server = app.listen("3001", function(err) {
     if (err) {

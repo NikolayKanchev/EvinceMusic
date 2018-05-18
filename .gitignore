@@ -2,6 +2,7 @@
 botsettings.json
 
 #the uploaded files
+db-backend/uploads
 uploads/
 
 # Logs

@@ -26,9 +26,9 @@
 
 .mat-button{
   color: #424242;
-  // color: #BDBDBD;
-  // font-weight: bold;
 }
+
+
 
 .mat-toolbar{
   background-color: #FFF;
@@ -112,6 +112,12 @@ button{
   padding-right: 6px;
 }
 
+button:focus{
+  background-color: #BDBDBD;
+}
 
+.mat-icon-button:focus{
+  background-color: inherit;
+}
   
   

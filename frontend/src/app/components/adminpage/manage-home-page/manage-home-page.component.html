@@ -1,5 +1,12 @@
-<button (click)="getProjects()">Get Projects</button>
-<button (click)="addProject()">Add Project</button>
-<button (click)="deleteProject()">Delete Project</button>
-<button (click)="updateProject()">Update Project</button>
+
+<div id="container">
+  <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <span class="example-spacer"></span>
+        <button mat-button routerLink="all-projects" mat-button >All Projects</button>
+        <button mat-button routerLink="add-new-project">New Project</button>
+      </mat-toolbar-row>
+  </mat-toolbar>
+</div>
+<router-outlet></router-outlet>
 

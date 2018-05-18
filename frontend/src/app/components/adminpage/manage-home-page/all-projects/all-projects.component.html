@@ -1,0 +1,32 @@
+<div class="example-container mat-elevation-z8">
+
+  <mat-table #table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="pick">
+      <mat-header-cell *matHeaderCellDef> Pickture </mat-header-cell>
+      <mat-cell *matCellDef="let project"> {{project.pick}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+      <mat-cell *matCellDef="let project"> {{project.title}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+      <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+      <mat-cell *matCellDef="let project"> {{project.date}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
+      <mat-cell *matCellDef="let project">
+        <button mat-button (click)="onDelete(project.id)">
+            <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

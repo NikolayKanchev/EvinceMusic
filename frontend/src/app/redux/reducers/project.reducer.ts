@@ -28,17 +28,15 @@ export function projectReducer(state: ProjectsState = INITIAL_STATE, action:any)
     return state;
 
     case ProjectActions.DELETE_PROJECT: // The component wants the data
-    // return tassign(state, {projects: [...state.projects, action.payload]});
     return state;
 
 
     case ProjectActions.DELETE_PROJECT_SUCCESS:
-        // return tassign(state, {projects: [...state.projects, action.payload]});
-        if (action.payload.projects.length === 0){
-          return state;
-        }else{
-           return tassign(state, {projects: [...action.payload.projects]});
-        }
+      if (action.payload.projects.length === 0){
+        return state;
+      }else{
+          return tassign(state, {projects: [...action.payload.projects]});
+      }
    
     case ProjectActions.DELETE_PROJECT_FAILURE: // The ws failed or something else bad
     return state;
@@ -46,12 +44,8 @@ export function projectReducer(state: ProjectsState = INITIAL_STATE, action:any)
     case ProjectActions.UPDATE_PROJECT: // The component wants the data
     return state;
 
-    // return tassign(state, {projects: [...state.projects, action.payload]});
-
     case ProjectActions.UPDATE_PROJECT_SUCCESS:
-    // return tassign(state, {projects: [...state.projects, action.payload]});
     return tassign(state, {projects: [...action.payload.projects]});
-
 
     case ProjectActions.UPDATE_PROJECT_FAILURE: // The ws failed or something else bad
     return state;

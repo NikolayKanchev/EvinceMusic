@@ -12,58 +12,53 @@ import { ProjectActions } from '../../../redux/actions/project.actions';
 })
 export class ManageHomePageComponent implements OnInit {
 
-  private projects: any;
+  // private projects: any;
 
-  private projectToDelete: string = '259';
+  // private projectToDelete: string = '259';
 
-  private project: Project = {
-    id: null,
-    pick: "no pick",
-    title: "title",
-    date: "date",
-    text: "text",
-  };
+  // private project: Project = {
+  //   id: null,
+  //   pick: "no pick",
+  //   title: "title",
+  //   date: "date",
+  //   text: "text",
+  // };
 
-  private projectToUpdate: Project = {
-    id: '270',
-    pick: "no pick ************",
-    title: "title ***********",
-    date: "date *************",
-    text: "text *************",
-  };
+  // private projectToUpdate: Project = {
+  //   id: '270',
+  //   pick: "no pick ************",
+  //   title: "title ***********",
+  //   date: "date *************",
+  //   text: "text *************",
+  // };
 
   constructor(private projectService: ProjectService, private ngRedux: NgRedux<IAppState>,
     private projectActions: ProjectActions ) { }
 
   ngOnInit() {
-    //region*********** Get all projects can be done like this **************
-    // this.ngRedux.subscribe(() => {
-    //   this.projects = this.ngRedux.getState().projects
-    //   console.log(this.projects);
-    // }) 
-    //endregion   
-  }
-
-  getProjects(){
-    this.projectActions.getProjects();
     
-    this.ngRedux.select(state => state.projects).subscribe(res => { 
-      this.projects = res.projects;  
-      console.log(this.projects);
-    })
   }
 
-  addProject(){
-    this.projectActions.addProject(this.project);
-  }
+  // getProjects(){
+  //   this.projectActions.getProjects();
+    
+  //   this.ngRedux.select(state => state.projects).subscribe(res => { 
+  //     this.projects = res.projects;  
+  //     console.log(this.projects);
+  //   })
+  // }
 
-  deleteProject(){
-    this.projectActions.deleteProject(this.projectToDelete);
-  }
+  // addProject(){
+  //   this.projectActions.addProject(this.project);
+  // }
 
-  updateProject(){
-    this.projectActions.updateProject(this.projectToUpdate);
+  // deleteProject(){
+  //   this.projectActions.deleteProject(this.projectToDelete);
+  // }
 
-  }
+  // updateProject(){
+  //   this.projectActions.updateProject(this.projectToUpdate);
+
+  // }
 
 }
