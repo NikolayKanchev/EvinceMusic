@@ -8,12 +8,18 @@
             
             <input formControlName="title" id="title" placeholder="Title" type="text" autocomplete="off" value="" required>
             <span class="error" *ngIf="!addProjectForm.controls.title.valid && addProjectForm.controls.title.touched">
-                    Please fill out the the title !
+                    Please fill out the title !
             </span>
             <span class="error" id="emptyLine" *ngIf="(addProjectForm.controls.title.valid && addProjectForm.controls.title.touched) || !addProjectForm.controls.title.touched">ooooooooooooooooooooooo</span>
+            
+            <input formControlName="date" id="date" placeholder="Period" type="text" autocomplete="off" value="" required>
+            <span class="error" *ngIf="!addProjectForm.controls.date.valid && addProjectForm.controls.date.touched">
+                    Please fill out the period !
+            </span>
+            <span class="error" id="emptyLine" *ngIf="(addProjectForm.controls.date.valid && addProjectForm.controls.date.touched) || !addProjectForm.controls.date.touched">ooooooooooooooooooooooo</span>
         </div>
         <div id="image-container">
-            <img [src]="url">
+            <img [attr.src]="url">
         </div>
     </div>
     <div id="text-container">

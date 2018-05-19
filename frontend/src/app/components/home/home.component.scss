@@ -109,8 +109,14 @@ button {
     flex-flow: row wrap;
 }
 
+#loaded-cards{
+  margin-left: 2.4em;
+}
+
 .image{
-    background-image: url('party.jpg');
+    // background-image: url('party.jpg');
+    // background-image: url("./../../../../../db-backend/uploads/party.jpg");
+
     background-size: cover;
     background: no-repeat center center cover;
     height: 200px;

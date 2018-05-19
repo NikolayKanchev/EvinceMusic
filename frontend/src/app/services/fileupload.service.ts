@@ -20,6 +20,10 @@ export class FileuploadService {
     return this.http.post<ServerResponce>(this.dbServerURL + "upload-file/", fd);
     
   }
+
+  deleteFile(pickName: string): Observable<ServerResponce> {
+    return this.http.post<ServerResponce>(this.dbServerURL + "delete-file/", {"pickName": pickName});
+  }
 }
 
 interface ServerResponce{

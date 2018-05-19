@@ -18,12 +18,12 @@ export class AddNewProjectComponent implements OnInit {
   message: string;
 
   private project: Project = {
-      id: null,
-      pick: "",
-      title: "",
-      date: "no date",
-      text: "",
-    };
+    id: null,
+    pick: "",
+    title: "",
+    date: "no date",
+    text: "",
+  };
 
 
   constructor(private fb: FormBuilder, private router: Router, private fileUploadService:FileuploadService, private projectActions: ProjectActions) {}
@@ -50,12 +50,14 @@ export class AddNewProjectComponent implements OnInit {
         this.project.pick = this.fileUploadService.selectedFile.name;
         this.project.title = addProjectForm.value.title;
         this.project.text = addProjectForm.value.text;
+        this.project.date = addProjectForm.value.date;
 
         this.projectActions.addProject(this.project);
       
         addProjectForm.reset();
       
     }else{
+
     }
   }
 
@@ -66,7 +68,8 @@ export class AddNewProjectComponent implements OnInit {
   createForm(): any {
     this.addProjectForm = this.fb.group({
       title: ["", Validators.required],
-      text: ["", Validators.required]
+      text: ["", Validators.required],
+      date: ["", Validators.required]
     });
   }
 
@@ -79,8 +82,8 @@ export class AddNewProjectComponent implements OnInit {
 
       reader.readAsDataURL(this.fileUploadService.selectedFile); // read file as data url
 
-      reader.onload = (event) => { // called once readAsDataURL is completed
-        this.url = event.target.result;
+      reader.onload = (event:any) => { // called once readAsDataURL is completed
+          this.url = event.target.result;
       }
     }
   }
