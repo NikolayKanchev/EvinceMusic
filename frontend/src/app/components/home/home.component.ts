@@ -22,4 +22,8 @@ export class HomeComponent implements OnInit {
       this.projects = res.projects;  
     });
   }
+
+  onProjectSelected(projectId: any){    
+    sessionStorage.setItem("projectId", projectId);
+  }
 }

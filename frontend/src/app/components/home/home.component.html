@@ -28,7 +28,7 @@
       </div>
       <p id="date">{{project.date}}</p>
       <p id="title">{{project.title}}<br>..................................</p>
-      <button routerLink="/project">Read more</button>
+      <button routerLink="/project" (click)="onProjectSelected(project.id)">Read more</button>
     </div>
   </div>
   <div class="empty card"></div>   
