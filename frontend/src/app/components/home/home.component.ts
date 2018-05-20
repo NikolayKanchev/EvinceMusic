@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../../redux/store/store';
 import { ProjectActions } from '../../redux/actions/project.actions';
 import { Project } from '../../entities/project';
-
 
 @Component({
   selector: 'app-home',
@@ -24,17 +22,4 @@ export class HomeComponent implements OnInit {
       this.projects = res.projects;  
     });
   }
-
-  // onSelectFile(pickName: string) {
-
-  //     let reader = new FileReader();
-
-  //     reader.readyState("./../../../../../db-backend/uploads/party.jpg"); // read file as data url
-
-  //     reader.onload = (event:any) => { // called once readAsDataURL is completed
-  //         this.url = event.target.result;
-      
-  //   }
-  // }
-
 }

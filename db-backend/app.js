@@ -15,6 +15,8 @@ const nodemailer = require('nodemailer');
 const sendMail = require("./email_config/emailAndPass");
 const formidable = require('formidable');
 const fs = require('fs');
+app.use(express.static('uploads'));
+// app.use('/pictures', express.static(path.join(__dirname, 'uploads')));
   
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -465,6 +467,12 @@ app.post('/delete-file', function (req, res){
       }
 
 });
+
+// app.post('/get-picture', function(req, res){
+//     let pickName = req.body.pickName;
+//     filePath = "./uploads" + pickName;
+//     res.sendFile(filePath)
+// });
 //endregion
 
 let server = app.listen("3001", function(err) {

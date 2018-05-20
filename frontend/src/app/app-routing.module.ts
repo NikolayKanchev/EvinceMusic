@@ -20,6 +20,7 @@ import { PrivacyComponent } from './components/privacy/privacy.component';
 import { TermsComponent } from './components/terms/terms.component';
 import { AllProjectsComponent } from './components/adminpage/manage-home-page/all-projects/all-projects.component';
 import { AddNewProjectComponent } from './components/adminpage/manage-home-page/add-new-project/add-new-project.component';
+import { ProjectComponent } from './components/project/project.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -36,20 +37,21 @@ const routes: Routes = [
   { path: 'professionalservices', component: ProfessionalServicesComponent},
   { path: 'promote', component: PromoteComponent},
   { path: 'talent', component: TalentComponent},
-  // { path: 'adminpage', component: AdminpageComponent, canActivate: [AdminAccess], children:[
-  //   { path: 'users', component: UsersComponent},
-  //   { path: 'manage-home-page', component: ManageHomePageComponent, children: [
-  //     { path: 'all-projects', component: AllProjectsComponent},
-  //     { path: 'add-new-project', component: AddNewProjectComponent},
-  //   ]}
-  // ]},
-  { path: 'adminpage', component: AdminpageComponent, children:[
+  { path: 'adminpage', component: AdminpageComponent, canActivate: [AdminAccess], children:[
     { path: 'users', component: UsersComponent},
     { path: 'manage-home-page', component: ManageHomePageComponent, children: [
       { path: 'all-projects', component: AllProjectsComponent},
       { path: 'add-new-project', component: AddNewProjectComponent},
     ]}
   ]},
+  { path: 'project', component: ProjectComponent},
+  // { path: 'adminpage', component: AdminpageComponent, children:[
+  //   { path: 'users', component: UsersComponent},
+  //   { path: 'manage-home-page', component: ManageHomePageComponent, children: [
+  //     { path: 'all-projects', component: AllProjectsComponent},
+  //     { path: 'add-new-project', component: AddNewProjectComponent},
+  //   ]}
+  // ]},
   { path: 'error', component: ErrorComponent},
   { path: 'acc-settings', component: AccSettingsComponent, canActivate: [AuthGuard]},
   { path: 'error/login', redirectTo: 'login', pathMatch: 'full'},

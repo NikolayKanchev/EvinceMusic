@@ -51,6 +51,7 @@ import { ProjectEpic } from './redux/epics/project.epic';
 import { AllProjectsComponent } from './components/adminpage/manage-home-page/all-projects/all-projects.component';
 import { AddNewProjectComponent } from './components/adminpage/manage-home-page/add-new-project/add-new-project.component';
 import { FileuploadService } from './services/fileupload.service';
+import { ProjectComponent } from './components/project/project.component';
 
 // Configs 
 export function getAuthServiceConfigs() {
@@ -90,6 +91,7 @@ export function getAuthServiceConfigs() {
     PrivacyComponent,
     AllProjectsComponent,
     AddNewProjectComponent,
+    ProjectComponent,
   ],
   imports: [
     BrowserModule,

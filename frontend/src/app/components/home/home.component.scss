@@ -114,18 +114,16 @@ button {
 }
 
 .image{
-    // background-image: url('party.jpg');
-    // background-image: url("./../../../../../db-backend/uploads/party.jpg");
-
     background-size: cover;
     background: no-repeat center center cover;
-    height: 200px;
-    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
 }
 
 img {
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 300px;
+    max-height: 150px;
 }
 
 .empty{

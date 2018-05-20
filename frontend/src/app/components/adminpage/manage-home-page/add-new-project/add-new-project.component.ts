@@ -46,7 +46,6 @@ export class AddNewProjectComponent implements OnInit {
           addProjectForm.reset();
         })
 
-        // Here I have to add the new picture
         this.project.pick = this.fileUploadService.selectedFile.name;
         this.project.title = addProjectForm.value.title;
         this.project.text = addProjectForm.value.text;
@@ -78,12 +77,12 @@ export class AddNewProjectComponent implements OnInit {
 
       this.fileUploadService.selectedFile = <File>event.target.files[0];
 
-      let reader = new FileReader();
+      let reader = new FileReader();      
 
       reader.readAsDataURL(this.fileUploadService.selectedFile); // read file as data url
 
       reader.onload = (event:any) => { // called once readAsDataURL is completed
-          this.url = event.target.result;
+          this.url = event.target.result;          
       }
     }
   }
