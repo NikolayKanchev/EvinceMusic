@@ -58,9 +58,12 @@ img {
 
 #img-services, #text{
     width: 35em;
-    background: white;
     margin-left: 1.5%;
     margin-right: 1.5%;
+    border-radius: 3px;
+    box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.2);
+    background-color: white;
+    height: 420px;
 }
 
 #text h1, #allstars{
@@ -75,10 +78,11 @@ img {
 }
 
 #prof-services{
-    margin-top: 5em;
+    margin-top: 12em;
+    text-align: justify;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    opacity: 0.9;
 }
+
 
