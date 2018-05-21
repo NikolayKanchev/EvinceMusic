@@ -45,13 +45,6 @@ const routes: Routes = [
     ]}
   ]},
   { path: 'project', component: ProjectComponent},
-  // { path: 'adminpage', component: AdminpageComponent, children:[
-  //   { path: 'users', component: UsersComponent},
-  //   { path: 'manage-home-page', component: ManageHomePageComponent, children: [
-  //     { path: 'all-projects', component: AllProjectsComponent},
-  //     { path: 'add-new-project', component: AddNewProjectComponent},
-  //   ]}
-  // ]},
   { path: 'error', component: ErrorComponent},
   { path: 'acc-settings', component: AccSettingsComponent, canActivate: [AuthGuard]},
   { path: 'error/login', redirectTo: 'login', pathMatch: 'full'},
