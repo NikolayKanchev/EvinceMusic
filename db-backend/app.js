@@ -82,7 +82,7 @@ app.post("/signup", function(req, res) {
                             
                         }).then(persistedUser => {
                                 response.status = 200;
-                                response.message = "user signed up";
+                                response.message = "The user was registered successfully !";
                                 res.send(response);
                             }).catch(err => {
                                 response.status = 500;
