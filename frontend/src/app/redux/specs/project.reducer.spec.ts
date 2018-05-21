@@ -11,27 +11,18 @@ describe('project reducer', () => {
   it('Should add a new project object to array of projects', () => {
     let state = { projects: []};
     deepFreeze(state);
-    let dateString = Date.now.toString;
 
     let newProject = { 
       id: "1",
       pick: "comming soon",
       title: "The best project",
-      date: this.dateString,
-      text: "HHHHHHHHHHHHHHHHH HHHHHHHHHHHH HHHHHHHHHHHHHH "
+      date: "11.09",
+      text: "test"
      };
 
     expect( projectReducer(state, { 
       type: types.ProjectActions.ADD_PROJECT, 
       payload: newProject
-    })).toEqual({ projects: 
-      [{  
-      id: "1",
-      pick: "comming soon",
-      title: "The best project",
-      date: this.dateString,
-      text: "HHHHHHHHHHHHHHHHH HHHHHHHHHHHH HHHHHHHHHHHHHH " 
-      }]
-    });
+    })).toEqual({ projects: []});
   });
 });

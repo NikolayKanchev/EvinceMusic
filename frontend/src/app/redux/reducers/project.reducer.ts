@@ -2,7 +2,7 @@ import { ProjectActions } from './../actions/project.actions';
 import { ProjectsState } from './../store/store';
 import { tassign } from 'tassign';
 
-const INITIAL_STATE: ProjectsState = {projects: []}
+const INITIAL_STATE: ProjectsState = {projects: []};
 
 export function projectReducer(state: ProjectsState = INITIAL_STATE, action:any) {
  
@@ -18,37 +18,32 @@ export function projectReducer(state: ProjectsState = INITIAL_STATE, action:any)
       return state;
 
     case ProjectActions.ADD_PROJECT: // The component wants the data
-    return state;
+      return state;
     // return state;
 
     case ProjectActions.ADD_PROJECT_SUCCESS:
-    return tassign(state, {projects: [...action.payload.projects]});
+      return tassign(state, {projects: action.payload.projects});
 
     case ProjectActions.ADD_PROJECT_FAILURE: // The ws failed or something else bad
-    return state;
+      return state;
 
     case ProjectActions.DELETE_PROJECT: // The component wants the data
-    return state;
-
+      return state;
 
     case ProjectActions.DELETE_PROJECT_SUCCESS:
-      if (action.payload.projects.length === 0){
-        return state;
-      }else{
-          return tassign(state, {projects: [...action.payload.projects]});
-      }
+      return tassign(state, {projects: action.payload.projects});
    
     case ProjectActions.DELETE_PROJECT_FAILURE: // The ws failed or something else bad
-    return state;
+      return state;
 
     case ProjectActions.UPDATE_PROJECT: // The component wants the data
-    return state;
+      return state;
 
     case ProjectActions.UPDATE_PROJECT_SUCCESS:
-    return tassign(state, {projects: [...action.payload.projects]});
+      return tassign(state, {projects: action.payload.projects});
 
     case ProjectActions.UPDATE_PROJECT_FAILURE: // The ws failed or something else bad
-    return state;
+      return state;
  
     default:
      return state;

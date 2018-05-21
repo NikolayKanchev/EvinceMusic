@@ -17,11 +17,11 @@ getProjects = (action$: ActionsObservable<any>) => {
   return action$.ofType(ProjectActions.GET_PROJECTS) // Listen for this action
     .mergeMap(({payload}) => { 
         return this.projectService.getProjects() //get projects
-          .map((result: any[]) => ({ // when web service responds with success, call this action with payload that came back from webservice
+          .map((result: any[]) => ({
             type: ProjectActions.GET_PROJECTS_SUCCESS,
             payload: result
           }))
-          .catch(error => Observable.of({ // when web service responds with failure, call this action with payload that came back from webservice
+          .catch(error => Observable.of({
             type: ProjectActions.GET_PROJECTS_FAILURE,
             payload: error
         }));
@@ -32,11 +32,11 @@ getProjects = (action$: ActionsObservable<any>) => {
     return action$.ofType(ProjectActions.ADD_PROJECT) // Listen for this action
       .mergeMap(({ payload }) => { 
         return this.projectService.addProject(payload) // addProject
-            .map((result: any) => ({ // when web service responds with success, call this action with payload that came back from webservice
+            .map((result: any) => ({ 
               type: ProjectActions.ADD_PROJECT_SUCCESS,
               payload: result
             }))
-            .catch(error => Observable.of({ // when web service responds with failure, call this action with payload that came back from webservice
+            .catch(error => Observable.of({ 
               type: ProjectActions.ADD_PROJECT_FAILURE,
               payload: error
             }));

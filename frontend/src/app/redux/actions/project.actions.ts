@@ -35,8 +35,6 @@ export class ProjectActions {
      this.ngRedux.dispatch({
        type: ProjectActions.ADD_PROJECT,
        payload: project
-       //Example of passing multiple parameters to reducer by passing an object
-       //payload: {baby, sitterName}
      })
    }
 
